@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalking;
     private Vector2 lastDirection;
     private Vector2 movementDirection;
-    public UnityEvent sss;
 
     [Header("References:")]
     [SerializeField] private SpriteRenderer spriteRenderer = null;

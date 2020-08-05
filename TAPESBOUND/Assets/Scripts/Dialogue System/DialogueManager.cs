@@ -20,12 +20,16 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue Options")]
     [SerializeField]
-    private float dialogueDelay;
+    private float dialogueDelay = 0.01f;
 
 
     [Header("UI References")]
     public GameObject dialogueBox;
     public Text dialogueText;
+
+    // Dialogue variables.
+    //private bool isCurrentlyTyping = false;
+    //private string completeText = "";
 
     // All dialogues lines.
     public Queue<DialogueBase.Info> dialogueInfo = new Queue<DialogueBase.Info>(); // FIFO Collection
