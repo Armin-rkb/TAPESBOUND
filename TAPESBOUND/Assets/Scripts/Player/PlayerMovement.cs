@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalking;
     private Vector2 lastDirection;
     private Vector2 movementDirection;
+    public UnityEvent sss;
 
     [Header("References:")]
     [SerializeField] private SpriteRenderer spriteRenderer = null;
