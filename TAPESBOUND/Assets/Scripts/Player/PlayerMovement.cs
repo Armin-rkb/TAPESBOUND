@@ -46,6 +46,21 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movementDirection * movementSpeed;
     }
 
+    public void StopMove()
+    {
+        rb.velocity = new Vector2(0, 0);
+    }
+
+    public void StopAnimation()
+    {
+        animator.enabled = false;
+    }
+
+    public void StartAnimation()
+    {
+        animator.enabled = true;
+    }
+
     private void FlipAnimation()
     {
         if (isWalking)
