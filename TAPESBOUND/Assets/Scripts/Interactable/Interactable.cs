@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class Interactable : MonoBehaviour, iInteractable
+public class Interactable : MonoBehaviour, IInteractable
 {
     private void OnTriggerEnter2D(Collider2D a_collision)
     {

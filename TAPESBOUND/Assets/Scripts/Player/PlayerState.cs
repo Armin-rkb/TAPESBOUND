@@ -8,7 +8,7 @@ public class PlayerState : MonoBehaviour
     private PlayerMovement playerMovement = null;
 
     public bool inDialogue = false;
-    public iInteractable currentInteractable = null;
+    public IInteractable currentInteractable = null;
 
     void Update()
     {

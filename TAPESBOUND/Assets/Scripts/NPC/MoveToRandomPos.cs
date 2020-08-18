@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCMovement : MonoBehaviour
+public class MoveToRandomPos : NPCMovementBase
 {
     [Header("Distance the NPC will travel")]
     [SerializeField]
@@ -10,14 +10,10 @@ public class NPCMovement : MonoBehaviour
     [SerializeField]
     private float maxDistance = 5f;
 
-    [Header("Speed")]
-    [SerializeField]
-    private float movementSpeed = 5f;
     [Header("Stop Time")]
     [SerializeField]
     private float waitTime = 1f;
 
-    private Vector2 targetPos;
     private Vector2 startPos;
 
     private bool isWaiting = false;
@@ -31,8 +27,12 @@ public class NPCMovement : MonoBehaviour
 
     void Update()
     {
-        float step = movementSpeed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, step);
+        Move();
+    }
+
+    public override void Move()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, targetPos, movementSpeed * Time.deltaTime);
 
         if (Vector2.Distance(targetPos, transform.position) < 0.05f
             && !isWaiting)
@@ -40,7 +40,7 @@ public class NPCMovement : MonoBehaviour
             StartCoroutine(BufferTimer());
         }
     }
-
+    
     // Wait and get a new position.
     private IEnumerator BufferTimer()
     {
