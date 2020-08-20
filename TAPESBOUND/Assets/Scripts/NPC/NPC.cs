@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+[RequireComponent(typeof(StateMachine))]
+public class NPC : MonoBehaviour
 {
+    private StateMachine stateMachine;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        stateMachine = GetComponent<StateMachine>();
     }
 
     // Update is called once per frame
