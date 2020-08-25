@@ -34,13 +34,6 @@ public class DialogueState : BaseState
         previousState = null;
     }
 
-    private void LookAtPlayer(Vector2 a_playerPos)
-    {
-        Vector2 playerDirection = (a_playerPos - (Vector2)npc.transform.position).normalized;
-        npc.animator.SetFloat("LastHorizontal", playerDirection.x);
-        npc.animator.SetFloat("LastVertical", playerDirection.y);
-    }
-
     private void OnEnable()
     {
         DialogueManager.onDialogueEnter += EnterDialogue;

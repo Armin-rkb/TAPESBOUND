@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         movementDirection.Normalize();
         isWalking = false;
 

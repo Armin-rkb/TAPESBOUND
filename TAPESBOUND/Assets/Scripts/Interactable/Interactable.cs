@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class Interactable : MonoBehaviour, IInteractable
 {
+    protected GameObject playerRef = null;
+
     private void OnTriggerEnter2D(Collider2D a_collision)
     {
         if (a_collision != null)
@@ -12,6 +14,7 @@ public class Interactable : MonoBehaviour, IInteractable
             if (a_collision.gameObject.tag == Tags.Player)
             {
                 a_collision.GetComponent<PlayerState>().currentInteractable = this;
+                playerRef = a_collision.gameObject;
             }
         }
     }
@@ -23,6 +26,7 @@ public class Interactable : MonoBehaviour, IInteractable
             if (a_collision.gameObject.tag == Tags.Player)
             {
                 a_collision.GetComponent<PlayerState>().currentInteractable = null;
+                playerRef = null;
             }
         }
     }

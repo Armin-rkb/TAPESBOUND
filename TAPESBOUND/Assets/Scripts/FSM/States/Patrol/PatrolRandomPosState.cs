@@ -22,8 +22,9 @@ public class PatrolRandomPosState : BaseState, IMove
     private Vector2 startPos;
     private Vector2 targetPos;
 
-    private Vector2 lastDirection;
     private Vector2 movementDirection;
+
+    private Coroutine bufferTimer;
 
     private void OnEnable()
     {
@@ -41,19 +42,32 @@ public class PatrolRandomPosState : BaseState, IMove
 
     public override void OnStateTick()
     {
-        Move();
-        FlipAnimation();
-        Animate();
+        if (!isWaiting)
+        {
+            Move();
+            FlipAnimation();
+            Animate();
+        }
+    }
+
+    public override void OnStateExit()
+    {
+        base.OnStateExit();
+        isWalking = false;
+        isWaiting = false;
+        npc.animator.SetBool("IsWalking", isWalking);
+        npc.StopCoroutine(bufferTimer);
     }
 
     public void Move()
     {
+        isWalking = true;
         npc.transform.position = Vector2.MoveTowards(npc.transform.position, targetPos, movementSpeed * Time.deltaTime);
 
         if (Vector2.Distance(targetPos, npc.transform.position) < 0.05f
             && !isWaiting)
         {
-            npc.StartCoroutine(BufferTimer());
+            bufferTimer = npc.StartCoroutine(BufferTimer());
         }
     }
 
@@ -65,13 +79,11 @@ public class PatrolRandomPosState : BaseState, IMove
         yield return new WaitForSeconds(waitTime);
         RandomPositionInRadius();
         isWaiting = false;
-        isWalking = true;
     }
 
     private void RandomPositionInRadius()
     {
         targetPos = startPos + (minDistance * Vector2.one + UnityEngine.Random.insideUnitCircle * maxDistance);
-        lastDirection = movementDirection;
         movementDirection = (targetPos - (Vector2) npc.transform.position).normalized;
     }
 
@@ -88,25 +100,12 @@ public class PatrolRandomPosState : BaseState, IMove
                 npc.spriteRenderer.flipX = false;
             }
         }
-        else
-        {
-            if (lastDirection.x > 0)
-            {
-                npc.spriteRenderer.flipX = true;
-            }
-            else
-            {
-                npc.spriteRenderer.flipX = false;
-            }
-        }
     }
 
     private void Animate()
     {
         npc.animator.SetFloat("Horizontal", movementDirection.x);
         npc.animator.SetFloat("Vertical", movementDirection.y);
-        npc.animator.SetFloat("LastHorizontal", lastDirection.x);
-        npc.animator.SetFloat("LastVertical", lastDirection.y);
         npc.animator.SetBool("IsWalking", isWalking);
     }
 }
