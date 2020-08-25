@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Dialogue Options", menuName = "DialogueOptions")]
+[CreateAssetMenu(fileName = "New Dialogue Options", menuName = "Dialogue/Dialogue Options", order = 2)]
 public class DialogueOptions : DialogueBase
 {
     [System.Serializable]

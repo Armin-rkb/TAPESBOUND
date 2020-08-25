@@ -10,7 +10,7 @@ public class PlayerState : MonoBehaviour
     public bool inDialogue = false;
     public IInteractable currentInteractable = null;
 
-    void Update()
+    private void Update()
     {
         CheckInteraction();
     }

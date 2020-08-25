@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b54ea602f346ef44bd76b0af0eaba9b, type: 3}
-  m_Name: Default IdleState
+  m_Script: {fileID: 11500000, guid: 1a4545060aba6c24eb2b5209e9971ade, type: 3}
+  m_Name: Default DialogueState
   m_EditorClassIdentifier: 
-  i: 301

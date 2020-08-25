@@ -49,11 +49,10 @@ public class DialogueManager : MonoBehaviour
     public static event OnDialogueExit onDialogueExit;
 
     /// <summary>
-    /// Retrieve the upcomming dialogue information.
+    /// Retrieve the upcoming dialogue information.
     /// </summary>
     public void EnqueueDialogue(DialogueBase a_dialogueBase)
     {
-        OpenDialogue();
         dialogueInfo.Clear();
         StartCoroutine(BufferTimer());
         

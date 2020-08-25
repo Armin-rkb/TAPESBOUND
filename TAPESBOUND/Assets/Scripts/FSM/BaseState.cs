@@ -1,4 +1,5 @@
-﻿using UnityEditorInternal;
+﻿using System;
+using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class BaseState : ScriptableObject
@@ -15,13 +16,23 @@ public abstract class BaseState : ScriptableObject
     // OnStateExit is called before switching states.
     public virtual void OnStateExit() {}
 
-    public virtual void SetStateMachine(StateMachine a_stateMachine) 
+    public void SetStateMachine(StateMachine a_stateMachine) 
     {
         stateMachine = a_stateMachine;
     }
 
-    public virtual void SetNPC(NPC a_npc) 
+    public void SetNPC(NPC a_npc) 
     {
         npc = a_npc;
+    }
+
+    public void SetAnimator(Animator a_anim)
+    {
+        npc.animator = a_anim;
+    }
+
+    public void SetSpriteRenderer(SpriteRenderer a_spriteRenderer)
+    {
+        npc.spriteRenderer = a_spriteRenderer;
     }
 }

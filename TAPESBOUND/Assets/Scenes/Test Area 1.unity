@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 77116940}
   - component: {fileID: 77116939}
   - component: {fileID: 77116938}
+  - component: {fileID: 77116944}
   - component: {fileID: 77116943}
   m_Layer: 0
   m_Name: Cow
@@ -258,7 +259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77116937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.545, y: 7.35, z: 0}
+  m_LocalPosition: {x: -2.85, y: 14.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -273,13 +274,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 77116937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8f2aba75cee554881f74a92484f891, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dddde6a3aff5eb4aa2fbce14c233d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  radius: 3
-  offset: 0.65
-  col: {fileID: 0}
+--- !u!114 &77116944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77116937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81817d40072e34f419c6bc1ca7931acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: {fileID: 11400000, guid: 6e23805dc97fbc64cad244bcbeb9f11b, type: 2}
+  availableStates:
+  - {fileID: 11400000, guid: 6e23805dc97fbc64cad244bcbeb9f11b, type: 2}
+  - {fileID: 11400000, guid: 5a2ffae016bee614a8abc5e9cf37770c, type: 2}
 --- !u!1 &223815026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1066,7 @@ MonoBehaviour:
   startState: {fileID: 11400000, guid: ec72ba9731702ba42aef607294448dcd, type: 2}
   availableStates:
   - {fileID: 11400000, guid: ec72ba9731702ba42aef607294448dcd, type: 2}
-  - {fileID: 11400000, guid: b821dce40a1b0d9438706c2b49e6ffb8, type: 2}
+  - {fileID: 11400000, guid: 5a2ffae016bee614a8abc5e9cf37770c, type: 2}
 --- !u!114 &1069884243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,7 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78274364ec5d34385d9fdfea1d3f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 647d6b238fd159942b7410bddf8e6d2c, type: 2}
+  dialogue: {fileID: 11400000, guid: f683483dea288fe4e9d3520948b870bc, type: 2}
 --- !u!58 &1069884244
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1187,7 +1200,8 @@ GameObject:
   - component: {fileID: 1256588577}
   - component: {fileID: 1256588581}
   - component: {fileID: 1256588580}
-  - component: {fileID: 1256588582}
+  - component: {fileID: 1256588584}
+  - component: {fileID: 1256588583}
   m_Layer: 0
   m_Name: Coach
   m_TagString: Untagged
@@ -1315,7 +1329,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &1256588582
+--- !u!114 &1256588583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1324,13 +1338,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1256588576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7db937000ed8134995c8e51c361c8a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dddde6a3aff5eb4aa2fbce14c233d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  minDistance: 1
-  maxDistance: 2
-  waitTime: 1
+--- !u!114 &1256588584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256588576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81817d40072e34f419c6bc1ca7931acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: {fileID: 11400000, guid: c6b1a7bdf438e454587e49053e1260a7, type: 2}
+  availableStates:
+  - {fileID: 11400000, guid: c6b1a7bdf438e454587e49053e1260a7, type: 2}
+  - {fileID: 0}
 --- !u!1 &1328997523
 GameObject:
   m_ObjectHideFlags: 0

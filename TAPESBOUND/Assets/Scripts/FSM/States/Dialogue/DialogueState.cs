@@ -11,31 +11,44 @@ public class DialogueState : BaseState
     public override void OnStateEnter()
     {
         base.OnStateEnter();
-        Debug.Log("Entered Dialogue State");
     }
 
     public override void OnStateTick()
     {
-        Debug.Log("Updating Dialogue State");
-
-        stateMachine.EnterState(typeof(PatrolState));
     }
 
     public override void OnStateExit()
     {
         base.OnStateExit();
+    }
 
-        Debug.Log("Exited Dialogue State");
+    private void EnterDialogue()
+    {
+        previousState = stateMachine.currentState;
+        stateMachine.EnterState(typeof(DialogueState));
+    }
+    
+    private void ExitDialogue()
+    {
+        stateMachine.EnterState(previousState);
+        previousState = null;
+    }
+
+    private void LookAtPlayer(Vector2 a_playerPos)
+    {
+        Vector2 playerDirection = (a_playerPos - (Vector2)npc.transform.position).normalized;
+        npc.animator.SetFloat("LastHorizontal", playerDirection.x);
+        npc.animator.SetFloat("LastVertical", playerDirection.y);
     }
 
     private void OnEnable()
     {
-        DialogueManager.onDialogueEnter += () => stateMachine.EnterState(typeof(DialogueState));
-        DialogueManager.onDialogueExit += () => stateMachine.EnterState(typeof(DialogueState));
+        DialogueManager.onDialogueEnter += EnterDialogue;
+        DialogueManager.onDialogueExit += ExitDialogue;
     }
     private void OnDisable()
     {
-        DialogueManager.onDialogueEnter -= () => stateMachine.EnterState(typeof(DialogueState));
-        DialogueManager.onDialogueExit -= () => stateMachine.EnterState(typeof(DialogueState));
+        DialogueManager.onDialogueEnter -= EnterDialogue;
+        DialogueManager.onDialogueExit -= ExitDialogue;
     }
 }

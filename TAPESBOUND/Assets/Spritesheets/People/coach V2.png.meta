@@ -1,19 +1,43 @@
 fileFormatVersion: 2
-guid: 095f4b8a06de3d047be6a26231793a1b
+guid: ab55243b1642b984a8553bdb391c948f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4286930098263584764
-    second: Walk_Down
+      213: -4414068731149310672
+    second: Coach_Movement_Down_1
   - first:
-      213: 7178634559231036570
-    second: Walk_Up
+      213: -1685167109028653827
+    second: Coach_Movement_Down_2
   - first:
-      213: -2178960827440122110
-    second: Walk_Left_1
+      213: 1923764638629620661
+    second: Coach_Movement_Left_1
   - first:
-      213: -5462740434553818731
-    second: Walk_Left_2
+      213: 5481871615771401775
+    second: Coach_Movement_Up_1
+  - first:
+      213: 7022450528132475463
+    second: Coach_Movement_Up_2
+  - first:
+      213: 2943773827698284839
+    second: Coach_Movement_Left_2
+  - first:
+      213: -9198494836394348070
+    second: Coach_Movement_Down_1
+  - first:
+      213: -9007921323071146766
+    second: Coach_Movement_Down_2
+  - first:
+      213: -812502054415999641
+    second: Coach_Movement_Left_1
+  - first:
+      213: -6241475277594039886
+    second: Coach_Movement_Up_1
+  - first:
+      213: -3996309420819928241
+    second: Coach_Movement_Up_2
+  - first:
+      213: -5525469182160119757
+    second: Coach_Movement_Left_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk_Down
+      name: Coach_Movement_Down_1
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cff6ee3163c3e7b30800000000000000
-      internalID: 4286930098263584764
+      spriteID: ad133789ea1685080800000000000000
+      internalID: -9198494836394348070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_Up
+      name: Coach_Movement_Down_2
       rect:
         serializedVersion: 2
         x: 16
@@ -148,14 +172,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9c0f4bf812af9360800000000000000
-      internalID: 7178634559231036570
+      spriteID: 2f47dad584f6df280800000000000000
+      internalID: -9007921323071146766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_Left_1
+      name: Coach_Movement_Left_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 24
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d5243bfa969b4f0800000000000000
+      internalID: -812502054415999641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coach_Movement_Up_1
       rect:
         serializedVersion: 2
         x: 0
@@ -169,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 207b0fc0ca6c2c1e0800000000000000
-      internalID: -2178960827440122110
+      spriteID: 2b9ef94cd43d169a0800000000000000
+      internalID: -6241475277594039886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_Left_2
+      name: Coach_Movement_Up_2
       rect:
         serializedVersion: 2
         x: 16
@@ -190,8 +235,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 591b14284827034b0800000000000000
-      internalID: -5462740434553818731
+      spriteID: f4b2b7f41c14a88c0800000000000000
+      internalID: -3996309420819928241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coach_Movement_Left_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3385af3dd079153b0800000000000000
+      internalID: -5525469182160119757
       vertices: []
       indices: 
       edges: []

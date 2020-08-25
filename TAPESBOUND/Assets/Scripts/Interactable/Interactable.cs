@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         if (a_collision != null)
         {
-            if (a_collision.gameObject.tag == "Player")
+            if (a_collision.gameObject.tag == Tags.Player)
             {
                 a_collision.GetComponent<PlayerState>().currentInteractable = this;
             }
@@ -20,7 +20,7 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         if (a_collision != null)
         {
-            if (a_collision.gameObject.tag == "Player")
+            if (a_collision.gameObject.tag == Tags.Player)
             {
                 a_collision.GetComponent<PlayerState>().currentInteractable = null;
             }
