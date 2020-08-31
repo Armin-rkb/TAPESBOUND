@@ -13,12 +13,5 @@ MonoBehaviour:
   m_Name: Sumo
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - text: .
-  - text: ..
-  - text: '...
-
-'
-  - text: '.......................................................................
-
-'
-  - text: YOOOOOOOOOOOOOOOOOOOOOOO
+  - text: '(The Sumo Wrestler had a menacing look to it.) '
+  - text: Yooooo!

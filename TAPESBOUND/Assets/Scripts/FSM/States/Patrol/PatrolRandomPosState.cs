@@ -26,14 +26,15 @@ public class PatrolRandomPosState : BaseState, IMove
 
     private Coroutine bufferTimer;
 
-    private void OnEnable()
-    {
-        startPos = npc.transform.position;
-    }
-
     public override void OnStateEnter()
     {
         base.OnStateEnter();
+
+        if (startPos == Vector2.zero)
+        {
+            startPos = npc.transform.position;
+        }
+
         isWaiting = false;
         isWalking = false;
 

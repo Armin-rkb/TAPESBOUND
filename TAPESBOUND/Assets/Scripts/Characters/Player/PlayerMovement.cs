@@ -16,16 +16,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator = null;
     [SerializeField] private Rigidbody2D rb = null;
 
+    public delegate void OnPlayerMove();
+    public static event OnPlayerMove onPlayerMove;
+    public delegate void OnPlayerStop();
+    public static event OnPlayerStop onPlayerStop;
+
     void Update()
     {
         FlipAnimation();
         Animate();
+        GetInput();
     }
 
     void FixedUpdate()
     {
-        GetInput();
-        Move();
+        if (isWalking)
+        {
+            Move();
+        }
+        else
+        {
+            StopMove();
+        }
     }
 
     private void GetInput()
@@ -44,11 +56,13 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = movementDirection * movementSpeed;
+        onPlayerMove?.Invoke();
     }
 
     public void StopMove()
     {
         rb.velocity = new Vector2(0, 0);
+        onPlayerStop?.Invoke();
     }
 
     public void StopAnimation()

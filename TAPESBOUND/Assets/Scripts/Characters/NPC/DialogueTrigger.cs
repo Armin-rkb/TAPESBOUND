@@ -5,7 +5,9 @@ using UnityEngine.Events;
 public class DialogueTrigger : Interactable
 {
     [SerializeField] 
-    private DialogueBase dialogue = null;
+    private DialogueBase[] dialogue = null;
+    private int dialogueIndex = 0;
+
     [SerializeField]
     private NPC npc = null;
     private bool isTriggered = false;
@@ -28,10 +30,23 @@ public class DialogueTrigger : Interactable
         }
         else
         {
+            isTriggered = true;
+         
             npc?.LookAtPlayer((Vector2)playerRef.transform.position);
             DialogueManager.instance.OpenDialogue();
-            DialogueManager.instance.EnqueueDialogue(dialogue);
-            isTriggered = true;
+            DialogueManager.instance.EnqueueDialogue(dialogue[dialogueIndex]);
+
+            CountNextDialogue();
+        }
+    }
+
+    private void CountNextDialogue()
+    {
+        dialogueIndex++;
+
+        if (dialogueIndex >= dialogue.Length)
+        {
+            dialogueIndex = 0;
         }
     }
 

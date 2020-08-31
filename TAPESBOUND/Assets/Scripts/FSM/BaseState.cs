@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BaseState : ScriptableObject
 {
