@@ -9,7 +9,7 @@ public class LevelLoader : MonoBehaviour
 
     public int level = 0;
 
-    public float transitionTime = 4;
+    private float transitionTime = 1.5f;
 
     void OnTriggerEnter2D(Collider2D a_collider)
     {

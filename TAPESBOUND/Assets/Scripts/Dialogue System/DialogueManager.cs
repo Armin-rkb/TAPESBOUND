@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -113,31 +115,50 @@ public class DialogueManager : MonoBehaviour
             DialogueOptions dialogueOptions = a_dialogueBase as DialogueOptions;
             optionsAmount = dialogueOptions.optionsInfo.Length;
 
-            for (int i = 0; i < optionButtons.Length; i++)
+            // Deactivate all options buttons to prevent choosing previous buttons.
+            foreach (GameObject optionButton in optionButtons)
             {
-                optionButtons[i].SetActive(false);
+                optionButton.SetActive(false);
             }
 
+            // Enable all possible buttons and set their event when pressed.
             for (int i = 0; i < optionsAmount; i++)
             {
                 optionButtons[i].SetActive(true);
-                optionButtons[i].GetComponent<Text>().text = dialogueOptions.optionsInfo[i].buttonName;
-                UnityEventHandler myEventHandler = optionButtons[i].GetComponent<UnityEventHandler>();
-                myEventHandler.eventHandler = dialogueOptions.optionsInfo[i].myEvent;
-                if (dialogueOptions.optionsInfo[i].nextDialogue != null)
+                optionButtons[i].transform.GetChild(0).GetComponent<Text>().text = dialogueOptions.optionsInfo[i].buttonName;
+                
+                int index = i;
+                optionButtons[i].GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    myEventHandler.nextDialogue = dialogueOptions.optionsInfo[i].nextDialogue;
-                }
-                else
-                {
-                    myEventHandler.nextDialogue = null;
-                }
+                    OnButtonPressed(dialogueOptions.optionsInfo[index].myEvent,
+                        dialogueOptions.optionsInfo[index].nextDialogue);
+                });
             }
+
+            // Select the first button by default.
+            EventSystem.current.SetSelectedGameObject(optionButtons[0]);
+            optionButtons[0].GetComponent<SelectableUI>().OnSelect(new BaseEventData(EventSystem.current));
         }
         else
         {
             isDialogueOption = false;
         }
+    }
+
+    void OnButtonPressed(UnityEvent a_dialogueEvent, DialogueBase a_nextDialogue)
+    {
+        a_dialogueEvent?.Invoke();
+
+        if (a_nextDialogue != null)
+        {
+            EnqueueDialogue(a_nextDialogue);
+        }
+
+        foreach (GameObject optionButton in optionButtons)
+        {
+            optionButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+        CloseOptions();
     }
 
     private IEnumerator BufferTimer()
