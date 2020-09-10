@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ba726fb313a04498a43ba1ffcc4fbb, type: 3}
+  m_Name: Quest_NFL
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - text: "Marge Simpson face \u2026"
+  - text: ...
+  - text: Do you know what the NFL stands for?
+  dialogueEvents:
+  - eventLine: 2
+    myEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 4e0e2171c64d1814c8db26a35faf2585, type: 2}
+          m_TargetAssemblyTypeName: EventBehaviour, Assembly-CSharp
+          m_MethodName: LookAtPlayer
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 14b53b8b-4509-41c7-b586-4d98b21f0c33
+            m_BoolArgument: 0
+          m_CallState: 2
+  optionsInfo:
+  - buttonName: Yes
+    nextDialogue: {fileID: 11400000, guid: b2534290080bc364fb62980b46b77d40, type: 2}
+    buttonEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - buttonName: No
+    nextDialogue: {fileID: 11400000, guid: e01ad2e64a1f8a44ab69afe4fb6e2f57, type: 2}
+    buttonEvent:
+      m_PersistentCalls:
+        m_Calls: []

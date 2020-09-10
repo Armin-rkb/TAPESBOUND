@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -32,7 +32,10 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] optionButtons = null;
 
     // Dialogue variables.
+    private DialogueBase dialogue = null;
     private bool isDialogueOption = false;
+    private bool hasDialogueEvents = false;
+    private int dialogueLineIndex = 0;
     private int optionsAmount = 0;
 
     private bool isCurrentlyTyping = false;
@@ -55,11 +58,17 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void EnqueueDialogue(DialogueBase a_dialogueBase)
     {
+        dialogue = a_dialogueBase;
+        dialogueLineIndex = 0;
+
         dialogueInfo.Clear();
         StartCoroutine(BufferTimer());
-        
+
+        // Check if the dialogue has events.
+        hasDialogueEvents = CheckHasEvents();
+
         // Check if the conversation has respond options.
-        OptionsParser(a_dialogueBase);
+        OptionsParser();
 
         foreach (DialogueBase.Info a_info in a_dialogueBase.dialogueInfo)
         {
@@ -67,6 +76,18 @@ public class DialogueManager : MonoBehaviour
         }
 
         DequeueDialogue();
+    }
+
+    private bool CheckHasEvents()
+    {
+        if (dialogue is DialogueEvent dialogueEvent)
+        {
+            if (dialogueEvent.dialogueEvents.Length != 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -84,6 +105,22 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             isCurrentlyTyping = false;
             return;
+        }
+
+        // Set the current Dialogue Line.
+        dialogueLineIndex++;
+
+        // Check for events to be fired.
+        if (hasDialogueEvents)
+        {
+            DialogueEvent dialogueEvent = dialogue as DialogueEvent;
+            foreach (DialogueEvent.Event a_event in dialogueEvent.dialogueEvents)
+            {
+                if (a_event.eventLine == dialogueLineIndex)
+                {
+                    a_event.myEvent?.Invoke();
+                }
+            }
         }
 
         // Close dialogue box when reaching the end.
@@ -107,12 +144,11 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeText(info));
     }
 
-    private void OptionsParser(DialogueBase a_dialogueBase)
+    private void OptionsParser()
     {
-        if (a_dialogueBase is DialogueOptions)
+        if (dialogue is DialogueOptions dialogueOptions)
         {
             isDialogueOption = true;
-            DialogueOptions dialogueOptions = a_dialogueBase as DialogueOptions;
             optionsAmount = dialogueOptions.optionsInfo.Length;
 
             // Deactivate all options buttons to prevent choosing previous buttons.
@@ -130,7 +166,7 @@ public class DialogueManager : MonoBehaviour
                 int index = i;
                 optionButtons[i].GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    OnButtonPressed(dialogueOptions.optionsInfo[index].myEvent,
+                    OnButtonPressed(dialogueOptions.optionsInfo[index].buttonEvent,
                         dialogueOptions.optionsInfo[index].nextDialogue);
                 });
             }

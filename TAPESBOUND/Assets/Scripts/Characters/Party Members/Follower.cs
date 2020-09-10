@@ -40,22 +40,22 @@ public class Follower : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerMovement.onPlayerMove += PlayerMovement_onPlayerMove;
-        PlayerMovement.onPlayerStop += PlayerMovementOnonPlayerStop;
+        PlayerMovement.onPlayerMove += RecordLeaderPos;
+        PlayerMovement.onPlayerStop += StopWalking;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.onPlayerMove -= PlayerMovement_onPlayerMove;
-        PlayerMovement.onPlayerStop -= PlayerMovementOnonPlayerStop;
+        PlayerMovement.onPlayerMove -= RecordLeaderPos;
+        PlayerMovement.onPlayerStop -= StopWalking;
     }
 
-    private void PlayerMovementOnonPlayerStop()
+    private void StopWalking()
     {
         isWalking = false;
     }
 
-    private void PlayerMovement_onPlayerMove()
+    private void RecordLeaderPos()
     {
         // record position of leader
         leaderMovement.Enqueue(leader.transform.position);
@@ -64,17 +64,9 @@ public class Follower : MonoBehaviour
 
     private void FlipAnimation()
     {
-        if (isWalking)
-        {
-            if (movementDirection.x > 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else
-            {
-                spriteRenderer.flipX = false;
-            }
-        }
+        if (!isWalking) return;
+
+        spriteRenderer.flipX = movementDirection.x > 0;
     }
 
     private void Animate()

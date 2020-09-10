@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &36917231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 77116938}
   - component: {fileID: 77116944}
   - component: {fileID: 77116943}
+  - component: {fileID: 77116945}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78274364ec5d34385d9fdfea1d3f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
   dialogue:
   - {fileID: 11400000, guid: 197f524d7c7b6bc40b90d129c796372d, type: 2}
   npc: {fileID: 77116943}
@@ -522,6 +524,19 @@ MonoBehaviour:
   availableStates:
   - {fileID: 11400000, guid: 6e23805dc97fbc64cad244bcbeb9f11b, type: 2}
   - {fileID: 11400000, guid: 5a2ffae016bee614a8abc5e9cf37770c, type: 2}
+--- !u!114 &77116945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77116937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59694a72d4a0e4aae2677f1203dc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6f8fa109-cbe9-4354-9b58-92a45443dc4f
 --- !u!1 &223815026
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +699,7 @@ MonoBehaviour:
   dialogueOptionUI: {fileID: 1718160115}
   optionButtons:
   - {fileID: 287154825}
-  - {fileID: 0}
+  - {fileID: 1292798532}
 --- !u!4 &248101749
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &270798813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,6 +1302,7 @@ GameObject:
   - component: {fileID: 1069884243}
   - component: {fileID: 1069884242}
   - component: {fileID: 1069884241}
+  - component: {fileID: 1069884248}
   m_Layer: 0
   m_Name: Sumo
   m_TagString: Untagged
@@ -1337,6 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78274364ec5d34385d9fdfea1d3f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
   dialogue:
   - {fileID: 11400000, guid: f683483dea288fe4e9d3520948b870bc, type: 2}
   npc: {fileID: 1069884241}
@@ -1447,6 +1464,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069884248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069884240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59694a72d4a0e4aae2677f1203dc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4ebc36ce-680e-4bee-afb4-44f945ebd060
 --- !u!1 &1256588576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1493,7 @@ GameObject:
   - component: {fileID: 1256588584}
   - component: {fileID: 1256588583}
   - component: {fileID: 1256588582}
+  - component: {fileID: 1256588585}
   m_Layer: 0
   m_Name: Coach
   m_TagString: Untagged
@@ -1573,6 +1604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78274364ec5d34385d9fdfea1d3f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
   dialogue:
   - {fileID: 11400000, guid: 647d6b238fd159942b7410bddf8e6d2c, type: 2}
   npc: {fileID: 1256588583}
@@ -1642,6 +1674,24 @@ MonoBehaviour:
   availableStates:
   - {fileID: 11400000, guid: c6b1a7bdf438e454587e49053e1260a7, type: 2}
   - {fileID: 11400000, guid: 5a2ffae016bee614a8abc5e9cf37770c, type: 2}
+--- !u!114 &1256588585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256588576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59694a72d4a0e4aae2677f1203dc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2ae9f995-2ce3-48dc-8146-b871d6bfaaec
+--- !u!1 &1292798532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3570131537170227283, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
+  m_PrefabInstance: {fileID: 67989282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328997523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1935,7 @@ GameObject:
   - component: {fileID: 1778913708}
   - component: {fileID: 1778913707}
   - component: {fileID: 1778913714}
+  - component: {fileID: 1778913715}
   m_Layer: 0
   m_Name: Shoenice
   m_TagString: Untagged
@@ -1935,6 +1986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78274364ec5d34385d9fdfea1d3f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
   dialogue:
   - {fileID: 11400000, guid: de8f455e144e3e6419e8cf613fbba947, type: 2}
   - {fileID: 11400000, guid: 28969971b4cd7ef469dae63c103fc563, type: 2}
@@ -2066,6 +2118,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1778913715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778913706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59694a72d4a0e4aae2677f1203dc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 27ff7f3e-2079-4eef-a0a0-09060a97e183
 --- !u!1 &1804499453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,7 +2178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1839088881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2356,6 +2421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61dbab7667b1fe4294a696bce49436c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCharacterProfile: {fileID: 0}
   playerMovement: {fileID: 1847802695}
   inDialogue: 0
 --- !u!114 &1847802699
@@ -2523,7 +2589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(NPC))]
 public class DialogueTrigger : Interactable
 {
+    public bool lookAtPlayer = true;
+
     [SerializeField] 
     private DialogueBase[] dialogue = null;
     private int dialogueIndex = 0;
@@ -12,7 +13,7 @@ public class DialogueTrigger : Interactable
     private NPC npc = null;
     private bool isTriggered = false;
 
-    void Awake()
+    private void Awake()
     {
         if (npc == null)
         {
@@ -31,8 +32,18 @@ public class DialogueTrigger : Interactable
         else
         {
             isTriggered = true;
-         
-            npc?.LookAtPlayer((Vector2)playerRef.transform.position);
+
+            foreach (var dialogues in dialogue)
+            {
+                if (dialogues is DialogueEvent dialogueEvent)
+                {
+                }
+            }
+
+            if (lookAtPlayer)
+            {
+                npc?.LookAtPlayer(playerRef.transform.position);
+            }
             DialogueManager.instance.OpenDialogue();
             DialogueManager.instance.EnqueueDialogue(dialogue[dialogueIndex]);
 

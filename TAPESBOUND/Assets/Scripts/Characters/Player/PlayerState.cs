@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerState : MonoBehaviour
 {
+    public static Vector3 GetPosition => GetInstance().transform.position;
+
+    private static PlayerState GetInstance() 
+    {
+        if (instance == null)
+        {
+            instance = FindObjectOfType<PlayerState>();
+        }
+
+        return instance;
+    }
+
+    private static PlayerState instance;
+
+    public CharacterProfile playerCharacterProfile;
+
     [SerializeField]
     private PlayerMovement playerMovement = null;
 

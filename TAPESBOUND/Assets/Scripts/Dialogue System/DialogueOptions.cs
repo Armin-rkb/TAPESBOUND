@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Dialogue Options", menuName = "Dialogue/Dialogue Options", order = 2)]
-public class DialogueOptions : DialogueBase
+[CreateAssetMenu(fileName = "New Dialogue Options", menuName = "Dialogue/Dialogue Options", order = 3)]
+public class DialogueOptions : DialogueEvent
 {
     [System.Serializable]
     public class Options
     {
         public string buttonName = "";
         public DialogueBase nextDialogue;
-        public UnityEvent myEvent;
+        [Header("Button OnClick Event.")]
+        public UnityEvent buttonEvent;
     }
 
     private const int MAX_SIZE = 2;
