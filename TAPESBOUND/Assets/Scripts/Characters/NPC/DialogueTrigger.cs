@@ -24,6 +24,11 @@ public class DialogueTrigger : Interactable
     public override void Interact()
     {
         base.Interact();
+        if (dialogue[0] == null)
+        {
+            Debug.LogWarning("NPC Doesn't have a Dialogue attached!");
+            return;
+        }
         
         if (isTriggered)
         {

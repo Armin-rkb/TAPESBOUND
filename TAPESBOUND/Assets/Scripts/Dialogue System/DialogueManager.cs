@@ -183,16 +183,16 @@ public class DialogueManager : MonoBehaviour
 
     void OnButtonPressed(UnityEvent a_dialogueEvent, DialogueBase a_nextDialogue)
     {
+        foreach (GameObject optionButton in optionButtons)
+        {
+            optionButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+
         a_dialogueEvent?.Invoke();
 
         if (a_nextDialogue != null)
         {
             EnqueueDialogue(a_nextDialogue);
-        }
-
-        foreach (GameObject optionButton in optionButtons)
-        {
-            optionButton.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         CloseOptions();
     }
