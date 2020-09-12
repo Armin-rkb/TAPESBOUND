@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class PlayerState : MonoBehaviour
@@ -27,9 +29,35 @@ public class PlayerState : MonoBehaviour
     public bool inDialogue = false;
     public IInteractable currentInteractable = null;
 
+    [SerializeField] 
+    private GameObject playerOptionUI = null;
+    public bool inMenu = false;
+
     private void Update()
     {
         CheckInteraction();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (!inMenu)
+            {
+                playerOptionUI.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(playerOptionUI.transform.GetChild(0).GetChild(0).gameObject);
+                playerOptionUI.transform.GetChild(0).GetChild(0).GetComponent<SelectableUI>().OnSelect(new BaseEventData(EventSystem.current));
+                inMenu = true;
+
+                // Temp.
+                DialogueEnter();
+            }
+            else
+            {
+                playerOptionUI.SetActive(false);
+                inMenu = false;
+
+                // Temp.
+                DialogueExit();
+            }
+        }
     }
 
     private void CheckInteraction()
