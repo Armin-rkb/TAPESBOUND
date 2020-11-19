@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInfo:
   - text: Moo?
+  dialogueEvents: []
   optionsInfo:
   - buttonName: Moo
     nextDialogue: {fileID: 11400000, guid: d5941b552058d5648a8df01f4e08ee12, type: 2}
-    myEvent:
+    buttonEvent:
       m_PersistentCalls:
         m_Calls: []

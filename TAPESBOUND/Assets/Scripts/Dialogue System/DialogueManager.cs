@@ -44,6 +44,8 @@ public class DialogueManager : MonoBehaviour
     private bool isBuffering = false;
     private float dialogueBufferTime = 0.1f;
 
+    private string speakingNPC = null;
+
     // All dialogues lines.
     public Queue<DialogueBase.Info> dialogueInfo = new Queue<DialogueBase.Info>(); // FIFO Collection
 
@@ -52,6 +54,8 @@ public class DialogueManager : MonoBehaviour
     public static event OnDialogueEnter onDialogueEnter;
     public delegate void OnDialogueExit();
     public static event OnDialogueExit onDialogueExit;
+    public delegate void OnSpokenWithNPC(string a_npc_id);
+    public static event OnSpokenWithNPC onSpokenWithNPC;
 
     /// <summary>
     /// Retrieve the upcoming dialogue information.
@@ -220,8 +224,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = completeText;
     }
 
-    public void OpenDialogue()
+    public void OpenDialogue(string a_NPC)
     {
+        speakingNPC = a_NPC;
+
         dialogueBox.SetActive(true);
         CloseOptions();
 
@@ -233,6 +239,9 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
 
         onDialogueExit?.Invoke();
+        onSpokenWithNPC?.Invoke(speakingNPC);
+     
+        speakingNPC = null;
     }
 
     private void OptionsLogic()

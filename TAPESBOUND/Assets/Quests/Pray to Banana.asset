@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978b60db378ce2840a9154dfc7ff5f49, type: 3}
+  m_Name: Pray to Banana
+  m_EditorClassIdentifier: 
+  name: Pray to Banana
+  description: Listen to Banana's music.
+  completed: 0
+  questRewards: []
+  NPC_ID: 0

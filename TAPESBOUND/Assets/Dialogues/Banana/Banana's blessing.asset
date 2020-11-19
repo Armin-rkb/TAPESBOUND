@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d88a9f8760b82a41ae5461c809557bf, type: 3}
+  m_Name: Banana's blessing
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - text: "( \u0361\u275B\u202F\u035C\u0296 \u0361\u275B)"
+  - text: '*Inhales*'
+  - text: pffrrttrttrrrtttffftttrrrr
+  - text: "\u266C\u2669 \u266A \u266B \u266C\u2669 \u266A \u266B \u266C\u2669 \u266A
+      \u266B "
+  - text: "\u266C\u2669 \u266A \u266C\u2669 \u266A \u2669 \u266A \u266B \u2669 \u266A
+      \u266B "
+  - text: '*The soothing sound of the saxophone warms your soul.*'
+  - text: '*You have received Banana''s blessing.*'

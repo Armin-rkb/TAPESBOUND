@@ -15,14 +15,15 @@ MonoBehaviour:
   dialogueInfo:
   - text: Moo.
   - text: Moo moo moo.
+  dialogueEvents: []
   optionsInfo:
   - buttonName: Yes
     nextDialogue: {fileID: 11400000, guid: 89e3e42d282f81e4a954e595bd73b169, type: 2}
-    myEvent:
+    buttonEvent:
       m_PersistentCalls:
         m_Calls: []
   - buttonName: No
     nextDialogue: {fileID: 11400000, guid: bbd816f21d22ab443acbfc6464f0b956, type: 2}
-    myEvent:
+    buttonEvent:
       m_PersistentCalls:
         m_Calls: []

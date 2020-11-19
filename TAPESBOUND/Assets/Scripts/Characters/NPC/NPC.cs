@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(StateMachine))]
+[RequireComponent(typeof(StateMachine), typeof(ObjectId))]
 public class NPC : MonoBehaviour
 {
     public Animator animator = null;
     public SpriteRenderer spriteRenderer = null;
     public StateMachine stateMachine;
+    private ObjectId npc_id;
 
     private BaseState previousState = null;
 
     private void Awake()
     {
         stateMachine = GetComponent<StateMachine>();
+        npc_id = GetComponent<ObjectId>();
+    }
+
+    public string GetId()
+    {
+        return npc_id.Id;
     }
 
     public void LookAtPlayer(Vector2 a_playerPos)
