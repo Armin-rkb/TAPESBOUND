@@ -9,6 +9,9 @@ public class TalkQuest : Quest
     [Header("How often required to talk.")]
     public int speakAmount = 1;
 
+    public DialogueBase completeDialogue;
+
+    // Current speaking count.
     private int speakCount = 0;
 
     private const int MIN_TALK_AMOUNT = 1;
@@ -24,8 +27,8 @@ public class TalkQuest : Quest
     // Subscribe to notify about this event.
     public override void AcceptQuest()
     {
-        GameObject npc = ObjectId.Find(NPC_ID);
-        Debug.Log("Found npc: " + npc.name);
+        completed = false;
+        speakCount = 0;
         DialogueManager.onSpokenWithNPC += UpdateQuestProgress;
     }
 
@@ -34,7 +37,7 @@ public class TalkQuest : Quest
         if (a_npc_id == NPC_ID)
         {
             speakCount++;
-           
+
             if (speakCount == speakAmount)
             {
                 Complete();
@@ -45,8 +48,11 @@ public class TalkQuest : Quest
     public override void Complete()
     {
         base.Complete();
-        Debug.Log("We completed the quest! but was base called twice?");
         DialogueManager.onSpokenWithNPC -= UpdateQuestProgress;
-
+        
+        DialogueManager.instance.OpenDialogue(NPC_ID);
+        DialogueManager.instance.EnqueueDialogue(completeDialogue);
+        DialogueManager.instance.EnqueueDialogue(completeDialogue);
+        DialogueManager.instance.EnqueueDialogue(completeDialogue);
     }
 }

@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class Quest : ScriptableObject, IQuest
 {
-    public new string name;
-    public string description;
-    public bool completed;
-    public List<string> questRewards;
+    [SerializeField] protected new string name;
+    [SerializeField] protected string description;
+    [SerializeField] protected bool completed;
+    [SerializeField] protected List<string> questRewards;
 
     public virtual void AcceptQuest() {}
 
     public virtual void Complete()
     {
         Debug.Log("Quest:" + name + " completed");
+        completed = true;
         GrantReward();
     }
     

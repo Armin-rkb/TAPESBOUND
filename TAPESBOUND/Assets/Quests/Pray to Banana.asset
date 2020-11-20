@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pray to Banana
   description: Listen to Banana's music.
-  completed: 0
-  questRewards: []
-  NPC_ID: 0
+  completed: 1
+  questRewards:
+  - Banana peel
+  NPC_ID: eca6ec6d-a0fb-4ac0-a772-5680bfd9028f
+  speakAmount: 1
+  completeDialogue: {fileID: 11400000, guid: b87f27a99d75d454cb63b94c67e94e0a, type: 2}
