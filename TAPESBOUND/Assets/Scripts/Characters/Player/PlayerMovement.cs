@@ -1,20 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController = null;
+
     [Header("Stats:")]
     [SerializeField] private float movementSpeed = 0;
     private bool isWalking;
     private Vector2 lastDirection;
-    private Vector2 movementDirection;
-
-    [Header("References:")]
-    [SerializeField] private SpriteRenderer spriteRenderer = null;
-    [SerializeField] private Animator animator = null;
-    [SerializeField] private Rigidbody2D rb = null;
 
     public delegate void OnPlayerMove();
     public static event OnPlayerMove onPlayerMove;
@@ -42,71 +35,60 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        movementDirection.Normalize();
         isWalking = false;
 
-        if (movementDirection.x != 0 || movementDirection.y != 0)
+        if (playerController.playerInput.movementDirection.x != 0 || 
+            playerController.playerInput.movementDirection.y != 0)
         {
             isWalking = true;
-            lastDirection = movementDirection;
+            lastDirection = playerController.playerInput.movementDirection;
         }
     }
 
     private void Move()
     {
-        rb.velocity = movementDirection * movementSpeed;
+        playerController.rb.velocity = playerController.playerInput.movementDirection * movementSpeed;
         onPlayerMove?.Invoke();
     }
 
     public void StopMove()
     {
-        rb.velocity = new Vector2(0, 0);
+        playerController.rb.velocity = new Vector2(0, 0);
         onPlayerStop?.Invoke();
-    }
-
-    public void StopAnimation()
-    {
-        animator.enabled = false;
-    }
-
-    public void StartAnimation()
-    {
-        animator.enabled = true;
     }
 
     private void FlipAnimation()
     {
         if (isWalking)
         {
-            if (movementDirection.x > 0)
+            if (playerController.playerInput.movementDirection.x > 0)
             {
-                spriteRenderer.flipX = true;
+                playerController.spriteRenderer.flipX = true;
             }
             else
             {
-                spriteRenderer.flipX = false;
+                playerController.spriteRenderer.flipX = false;
             }
         }
         else
         {
             if (lastDirection.x > 0)
             {
-                spriteRenderer.flipX = true;
+                playerController.spriteRenderer.flipX = true;
             }
             else
             {
-                spriteRenderer.flipX = false;
+                playerController.spriteRenderer.flipX = false;
             }
         }
     }
 
     private void Animate()
     {
-        animator.SetFloat("Horizontal", movementDirection.x);
-        animator.SetFloat("Vertical", movementDirection.y);
-        animator.SetFloat("LastHorizontal", lastDirection.x);
-        animator.SetFloat("LastVertical", lastDirection.y);
-        animator.SetBool("IsWalking", isWalking);
+        playerController.animator.SetFloat("Horizontal", playerController.playerInput.movementDirection.x);
+        playerController.animator.SetFloat("Vertical", playerController.playerInput.movementDirection.y);
+        playerController.animator.SetFloat("LastHorizontal", lastDirection.x);
+        playerController.animator.SetFloat("LastVertical", lastDirection.y);
+        playerController.animator.SetBool("IsWalking", isWalking);
     }
 }

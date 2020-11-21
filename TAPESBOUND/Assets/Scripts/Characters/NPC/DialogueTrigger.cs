@@ -38,14 +38,6 @@ public class DialogueTrigger : Interactable
         {
             isTriggered = true;
 
-            // TODO: Remove?
-            foreach (var dialogues in dialogue)
-            {
-                if (dialogues is DialogueEvent dialogueEvent)
-                {
-                }
-            }
-
             if (lookAtPlayer)
             {
                 npc?.LookAtPlayer(playerRef.transform.position);

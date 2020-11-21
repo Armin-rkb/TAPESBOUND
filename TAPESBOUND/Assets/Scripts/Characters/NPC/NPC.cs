@@ -3,16 +3,19 @@
 [RequireComponent(typeof(StateMachine), typeof(ObjectId))]
 public class NPC : MonoBehaviour
 {
-    public Animator animator = null;
-    public SpriteRenderer spriteRenderer = null;
-    public StateMachine stateMachine;
+    [HideInInspector] public StateMachine stateMachine;
+    [HideInInspector] public Animator animator = null;
+    [HideInInspector] public SpriteRenderer spriteRenderer = null;
     private ObjectId npc_id;
 
     private BaseState previousState = null;
 
     private void Awake()
     {
-        stateMachine = GetComponent<StateMachine>();
+        if (!stateMachine)
+        {
+            stateMachine = GetComponent<StateMachine>();
+        }
         npc_id = GetComponent<ObjectId>();
     }
 

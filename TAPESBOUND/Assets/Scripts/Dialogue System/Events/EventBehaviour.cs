@@ -11,7 +11,7 @@ public class EventBehaviour : ScriptableObject
     public void LookAtPlayer(string a_targetNPC_id)
     {
         NPC npc = ObjectId.Find(a_targetNPC_id).GetComponent<NPC>();
-        npc.LookAtPlayer(PlayerState.GetPosition);
+        npc.LookAtPlayer(PlayerController.GetPosition);
     }
 }
 
