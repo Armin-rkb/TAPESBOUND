@@ -20,8 +20,8 @@ public class QuestManager : MonoBehaviour
     // Static Events
     public delegate void OnQuestAccepted();
     public static event OnQuestAccepted onQuestAccepted;
-    public delegate void OnQuestCompleted();
-    public static event OnQuestCompleted onQuestCompleted;
+    //public delegate void OnQuestCompleted();
+    //public static event OnQuestCompleted onQuestCompleted;
 
     [SerializeField] private List<Quest> activeQuests = new List<Quest>();
 

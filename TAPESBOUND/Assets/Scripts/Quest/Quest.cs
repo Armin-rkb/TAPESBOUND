@@ -26,9 +26,3 @@ public class Quest : ScriptableObject, IQuest
         }
     }
 }
-
-public interface IQuest
-{
-    void AcceptQuest();
-    void Complete();
-}

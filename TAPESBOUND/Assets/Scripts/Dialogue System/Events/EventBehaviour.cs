@@ -13,6 +13,13 @@ public class EventBehaviour : ScriptableObject
         NPC npc = ObjectId.Find(a_targetNPC_id).GetComponent<NPC>();
         npc.LookAtPlayer(PlayerController.GetPosition);
     }
+
+    public void GiveItemToPlayer(Item a_item)
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        Debug.Log(playerInventory);
+        playerInventory.AddToInventory(a_item);
+    }
 }
 
 
