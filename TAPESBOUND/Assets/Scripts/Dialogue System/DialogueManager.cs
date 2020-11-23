@@ -236,6 +236,8 @@ public class DialogueManager : MonoBehaviour
     
     private void CloseDialogue()
     {
+        dialogueInfo.Clear();
+
         dialogueBox.SetActive(false);
 
         onDialogueExit?.Invoke();

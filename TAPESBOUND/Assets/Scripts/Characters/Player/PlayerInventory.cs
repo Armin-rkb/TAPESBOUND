@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private List<Item> inventoryItems;
+    [SerializeField] private List<Item> inventoryItems = new List<Item>();
     private const int MAX_INVENTORY_SIZE = 10;
 
     // Start is called before the first frame update

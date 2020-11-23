@@ -20,6 +20,11 @@ public class EventBehaviour : ScriptableObject
         Debug.Log(playerInventory);
         playerInventory.AddToInventory(a_item);
     }
+
+    public void AddDialogue(DialogueBase a_dialogue)
+    {
+        DialogueManager.instance.EnqueueDialogue(a_dialogue);
+    }
 }
 
 

@@ -34,14 +34,18 @@ public class TalkQuest : Quest
 
     private void UpdateQuestProgress(string a_npc_id)
     {
-        if (a_npc_id == NPC_ID)
+        if (!completed)
         {
-            speakCount++;
-
-            if (speakCount == speakAmount)
+            if (a_npc_id == NPC_ID)
             {
-                Complete();
+                speakCount++;
+
+                if (speakCount == speakAmount)
+                {
+                    Complete();
+                }
             }
+
         }
     }
 
@@ -51,8 +55,6 @@ public class TalkQuest : Quest
         DialogueManager.onSpokenWithNPC -= UpdateQuestProgress;
         
         DialogueManager.instance.OpenDialogue(NPC_ID);
-        DialogueManager.instance.EnqueueDialogue(completeDialogue);
-        DialogueManager.instance.EnqueueDialogue(completeDialogue);
         DialogueManager.instance.EnqueueDialogue(completeDialogue);
     }
 }

@@ -4594,6 +4594,7 @@ GameObject:
   - component: {fileID: 1847802695}
   - component: {fileID: 1847802700}
   - component: {fileID: 1847802699}
+  - component: {fileID: 1847802701}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4798,6 +4799,19 @@ MonoBehaviour:
   menuKeyPressed: 0
   interactKey: 32
   interactKeyPressed: 0
+--- !u!114 &1847802701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847802691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55dc372fe4c62243a6fd4f1314c7e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItems: []
 --- !u!1001 &1853115757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5207,7 +5221,7 @@ Animator:
   m_GameObject: {fileID: 1952599638}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66468b02bd71d1c42876aedef112c693, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5261,7 +5275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtPlayer: 1
   dialogue:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 97b3b82142df92a46a079ed8e062512b, type: 2}
   npc: {fileID: 1952599641}
 --- !u!58 &1952599644
 CircleCollider2D:

@@ -30,23 +30,16 @@ public class DialogueTrigger : Interactable
             return;
         }
         
-        if (isTriggered)
+        if (lookAtPlayer)
         {
-            DialogueManager.instance.DequeueDialogue();
+            npc?.LookAtPlayer(playerRef.transform.position);
         }
-        else
-        {
-            isTriggered = true;
 
-            if (lookAtPlayer)
-            {
-                npc?.LookAtPlayer(playerRef.transform.position);
-            }
-            DialogueManager.instance.OpenDialogue(npc?.GetId());
-            DialogueManager.instance.EnqueueDialogue(dialogue[dialogueIndex]);
+        // Open & load in the dialogue.
+        DialogueManager.instance.OpenDialogue(npc?.GetId());
+        DialogueManager.instance.EnqueueDialogue(dialogue[dialogueIndex]);
 
-            CountNextDialogue();
-        }
+        CountNextDialogue();
     }
 
     private void CountNextDialogue()

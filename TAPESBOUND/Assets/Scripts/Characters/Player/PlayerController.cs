@@ -65,7 +65,10 @@ public class PlayerController : MonoBehaviour
             }
             case PlayerState.dialogue:
             {
-                CheckInteraction();
+                if (playerInput.interactKeyPressed)
+                {
+                    DialogueManager.instance.DequeueDialogue();
+                }
                 break;
             }
         }
