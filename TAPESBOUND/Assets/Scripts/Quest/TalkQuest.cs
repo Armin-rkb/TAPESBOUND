@@ -45,7 +45,6 @@ public class TalkQuest : Quest
                     Complete();
                 }
             }
-
         }
     }
 

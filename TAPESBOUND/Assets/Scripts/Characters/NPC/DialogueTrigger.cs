@@ -11,7 +11,6 @@ public class DialogueTrigger : Interactable
 
     [SerializeField]
     private NPC npc = null;
-    private bool isTriggered = false;
 
     private void Awake()
     {
@@ -50,20 +49,5 @@ public class DialogueTrigger : Interactable
         {
             dialogueIndex = 0;
         }
-    }
-
-    private void ResetDialogue()
-    {
-        isTriggered = false;
-    }
-
-    private void OnEnable()
-    {
-        DialogueManager.onDialogueExit += ResetDialogue;
-    }
-
-    private void OnDisable()
-    {
-        DialogueManager.onDialogueExit -= ResetDialogue;
     }
 }

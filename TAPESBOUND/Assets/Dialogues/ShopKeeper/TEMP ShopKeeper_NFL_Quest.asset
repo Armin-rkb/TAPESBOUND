@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cd490269f78a15488ec4f92c8cd9baa, type: 3}
-  m_Name: ShopKeeper_NFL_Quest
+  m_Name: TEMP ShopKeeper_NFL_Quest
   m_EditorClassIdentifier: 
   dialogueInfo:
   - text: How ya doing kid.
-  - text: Are you here for Shoey's?
+  - text: Are you here for Shoey?
   - text: I can't believe that bloody bastard sends kids for his liquor.
   - text: Anyway, just take it and leave.
   dialogueEvents:
@@ -29,6 +29,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 11400000, guid: 6c9f36b427f6ce5449ac71fc3fb7af24, type: 2}
             m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 5c7272bbaef097140a13cc97f11a24cb, type: 2}
+          m_TargetAssemblyTypeName: EventBehaviour, Assembly-CSharp
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

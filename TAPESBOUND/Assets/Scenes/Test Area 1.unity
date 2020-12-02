@@ -5192,7 +5192,7 @@ GameObject:
   - component: {fileID: 1952599642}
   - component: {fileID: 1952599639}
   m_Layer: 0
-  m_Name: Liquor Man
+  m_Name: Shop Keeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5221,7 +5221,7 @@ Animator:
   m_GameObject: {fileID: 1952599638}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 66468b02bd71d1c42876aedef112c693, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5310,7 +5310,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.75}
+    oldSize: {x: 0.5, y: 0.78125}
     newSize: {x: 0.5, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5359,7 +5359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1170920526537739677, guid: 9bb7ded545a3cb840a24d3da652c04c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80c8e501d82f7d140953acfcfa924851, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
