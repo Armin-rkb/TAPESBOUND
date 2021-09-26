@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 
 public enum PlayerState
 {
-    none,
+    normal,
     menu,
-    dialogue
+    dialogue,
+    cutscene
 }
 
 public class PlayerController : MonoBehaviour
@@ -39,16 +38,17 @@ public class PlayerController : MonoBehaviour
     public IInteractable currentInteractable = null;
 
     // Player State
-    public PlayerState currentPlayerState = PlayerState.none;
-    private PlayerState previousPlayerState = PlayerState.none;
+    public PlayerState currentPlayerState = PlayerState.normal;
+    private PlayerState previousPlayerState = PlayerState.normal;
 
     private void Update()
     {
         switch (currentPlayerState)
         {
-            case PlayerState.none:
+            case PlayerState.normal:
             {
                 CheckInteraction();
+                
                 if (playerInput.menuKeyPressed)
                 {
                     OpenMenu();
@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             }
+            case PlayerState.cutscene:
+            {
+                break;
+            }
         }
     }
 
@@ -89,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         playerOptionUI.SetActive(false);
         
-        SwitchPlayerState(PlayerState.none);
+        SwitchPlayerState(PlayerState.normal);
         UnlockMovement();
     }
     
@@ -120,18 +124,37 @@ public class PlayerController : MonoBehaviour
     
     private void DialogueExit()
     {
-        SwitchPlayerState(PlayerState.none);
+        if (previousPlayerState == PlayerState.cutscene)
+        {
+            SwitchPlayerState(PlayerState.cutscene);
+        }
+        else
+        {
+            SwitchPlayerState(PlayerState.normal);
+            UnlockMovement();
+        }
+    }
+
+    public void EnterCutscene(PlayableDirector aDirector)
+    {
+        SwitchPlayerState(PlayerState.cutscene);
+        LockMovement();
+    }
+
+    public void ExitCutscene(PlayableDirector aDirector)
+    {
+        SwitchPlayerState(PlayerState.normal);
         UnlockMovement();
     }
 
-    private void LockMovement()
+    public void LockMovement()
     {
         playerMovement.StopMove();
         playerMovement.enabled = false;
         animator.enabled = false;
     }
 
-    private void UnlockMovement()
+    public void UnlockMovement()
     {
         animator.enabled = true;
         playerMovement.enabled = true;
@@ -139,12 +162,28 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        // TODO: Replace this!
+        PlayableDirector playableDirector = GameObject.FindObjectOfType<PlayableDirector>();
+        if (playableDirector)
+        {
+            playableDirector.played += EnterCutscene;
+            playableDirector.stopped += ExitCutscene;
+        }
+
         DialogueManager.onDialogueEnter += DialogueEnter;
         DialogueManager.onDialogueExit += DialogueExit;
     }
 
     private void OnDisable()
     {
+        // TODO: Replace this!
+        PlayableDirector playableDirector = GameObject.FindObjectOfType<PlayableDirector>();
+        if (playableDirector)
+        {
+            playableDirector.played -= EnterCutscene;
+            playableDirector.stopped -= ExitCutscene;
+        }
+
         DialogueManager.onDialogueEnter -= DialogueEnter;
         DialogueManager.onDialogueExit -= DialogueExit;
     }
