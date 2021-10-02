@@ -646,7 +646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275887956
 GameObject:
@@ -676,7 +676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &278791597
 PrefabInstance:
@@ -907,6 +907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296885270}
+  - component: {fileID: 296885272}
   - component: {fileID: 296885269}
   - component: {fileID: 296885271}
   m_Layer: 0
@@ -949,6 +950,18 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 3908259494001840863, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 5078753104100743041, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 2032361202}
+  - key: {fileID: -5721591170360966628, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 2032361202}
+  - key: {fileID: 329326665721673776, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 2032361202}
+  - key: {fileID: 7482145228575451313, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 296885268}
+  - key: {fileID: 3629900611780192509, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 519420034}
+  - key: {fileID: 8437419516846881078, guid: 83fac97c903176d4d991b0b614bd1d36, type: 2}
+    value: {fileID: 1847802694}
   m_ExposedReferences:
     m_References:
     - 6026680896e418840accc9a95bf5856d: {fileID: 1847802691}
@@ -964,7 +977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &296885271
 MonoBehaviour:
@@ -984,6 +997,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d3dcc243aec56824db525e8bc3988560, type: 2}
     - {fileID: 11400000, guid: 54968e4baf5067744ba95ddd618b1f2f, type: 2}
     - {fileID: 11400000, guid: d87e797c131870a48bf0c10065e4563c, type: 2}
+    - {fileID: 11400000, guid: 70ac0af01f5fd1d42a3372bd08cad980, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1006,7 +1020,7 @@ MonoBehaviour:
           m_MethodName: EnqueueDialogue
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 197f524d7c7b6bc40b90d129c796372d, type: 2}
+            m_ObjectArgument: {fileID: 11400000, guid: 1dbb8e2c5ba7fa64abb7667339c949aa, type: 2}
             m_ObjectArgumentAssemblyTypeName: DialogueBase, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1017,18 +1031,6 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_MethodName: OpenDialogue
           m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 296885269}
-          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
-          m_MethodName: Pause
-          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1065,6 +1067,45 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 248101748}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: EnqueueDialogue
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 381e0b48b6622d446b1ba65dfa4c827b, type: 2}
+            m_ObjectArgumentAssemblyTypeName: DialogueBase, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 248101748}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: OpenDialogue
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &296885272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296885268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9703b0641a69f42a0af79d2448395e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 296885269}
 --- !u!224 &313537562 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
@@ -1198,6 +1239,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1283,7 +1325,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1304,6 +1346,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensity: 0.5
   target: {fileID: 519420032}
+--- !u!95 &519420034
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &555855559 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3570131537170227280, guid: 8c044309ca4bb3a479909d94d87e6f92, type: 3}
@@ -2624,7 +2685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1235046740
 MonoBehaviour:
@@ -2855,7 +2916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1604326976
 GameObject:
@@ -3318,7 +3379,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1847802694
 Animator:
@@ -3643,7 +3704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1867762033 stripped
 RectTransform:
@@ -4108,11 +4169,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032361201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.5, z: 0}
+  m_LocalPosition: {x: 4.42, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2053859993 stripped
 RectTransform:
@@ -4217,7 +4278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2117301982
 PrefabInstance:

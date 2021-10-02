@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,6 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     // Dialogue variables.
     private DialogueBase dialogue = null;
+    private bool isTimelineDialogue = false;
     private bool isDialogueOption = false;
     private bool hasDialogueEvents = false;
     private int dialogueLineIndex = 0;
@@ -71,8 +71,12 @@ public class DialogueManager : MonoBehaviour
         // Check if the dialogue has events.
         hasDialogueEvents = CheckHasEvents();
 
+        // Check if dialogue is for timelines to pause timeline.
+        isTimelineDialogue = CheckTimelineDialogue();
+
         // Check if the conversation has respond options.
         OptionsParser();
+
 
         foreach (DialogueBase.Info a_info in a_dialogueBase.dialogueInfo)
         {
@@ -80,6 +84,17 @@ public class DialogueManager : MonoBehaviour
         }
 
         DequeueDialogue();
+    }
+
+    private bool CheckTimelineDialogue()
+    {
+        if (dialogue is DialogueTimeline dialogueTimeline)
+        {
+            isTimelineDialogue = true;
+            TimelineManager.instance.PauseTimeline();
+            return true;
+        }
+        return false;
     }
 
     private bool CheckHasEvents()
@@ -236,6 +251,11 @@ public class DialogueManager : MonoBehaviour
     
     private void CloseDialogue()
     {
+        if (isTimelineDialogue)
+        {
+            TimelineManager.instance.ResumeTimeline();
+        }
+
         dialogueInfo.Clear();
 
         dialogueBox.SetActive(false);
