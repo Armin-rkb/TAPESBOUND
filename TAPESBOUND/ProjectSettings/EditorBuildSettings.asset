@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Indoor Area 1.unity
     guid: abdf8e7fd22ef4a499ffac0eaf75973d
+  - enabled: 1
+    path: Assets/Scenes/MasterScene.unity
+    guid: f796ac2e8f1dee849803006c7d985767
+  - enabled: 1
+    path: Assets/Scenes/World/MC Livingroom.unity
+    guid: 637ce6941716381499874cbac75a5aa2
+  - enabled: 1
+    path: Assets/Scenes/Test Scene Management/Master-Scene.unity
+    guid: 5a9fbacb9c8607c43ba22313062c6290
+  - enabled: 1
+    path: Assets/Scenes/Test Scene Management/Player-Scene.unity
+    guid: 70389ee7e8f79a644bb7fe27358d5d3d
+  - enabled: 1
+    path: Assets/Scenes/Test Scene Management/UI-Scene.unity
+    guid: a26d335414131654c91e231492100fa8
   m_configObjects: {}
