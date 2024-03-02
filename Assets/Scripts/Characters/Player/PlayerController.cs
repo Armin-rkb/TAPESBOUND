@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
@@ -8,6 +9,15 @@ public enum PlayerState
     menu,
     dialogue,
     cutscene
+}
+
+public enum PlayerOutfit
+{
+    Default,
+    Pajama,
+    Scuba,
+    Doctor,
+    Eskimo
 }
 
 public class PlayerController : MonoBehaviour
@@ -37,12 +47,24 @@ public class PlayerController : MonoBehaviour
 
     public IInteractable currentInteractable = null;
 
-    // Player State
+    [Header("PlayerState")]
     public PlayerState currentPlayerState = PlayerState.normal;
     private PlayerState previousPlayerState = PlayerState.normal;
+    public PlayerOutfit currentOutfit = PlayerOutfit.Default;
+    private PlayerOutfit previousOutfit = PlayerOutfit.Default;
+
+    private readonly string outfitAnimationParam = "Outfit";
+    private readonly string outfitChangedAnimationParam = "OutfitChanged";
+
+    private void Awake()
+    {
+        ChangeOutfit(currentOutfit);
+    }
 
     private void Update()
     {
+        ChangeOutfit(currentOutfit);
+
         switch (currentPlayerState)
         {
             case PlayerState.normal:
@@ -76,6 +98,18 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void ChangeOutfit(PlayerOutfit newOutfit)
+    {
+        if (previousOutfit == newOutfit)
+            return;
+        
+        previousOutfit = currentOutfit;
+        currentOutfit = newOutfit;
+        animator.SetInteger(outfitAnimationParam, (int)currentOutfit);
+        animator.SetTrigger(outfitChangedAnimationParam);
+        animator.ResetTrigger(outfitChangedAnimationParam);
     }
 
     private void OpenMenu()
