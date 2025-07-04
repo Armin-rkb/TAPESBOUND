@@ -16,7 +16,7 @@ public class EventBehaviour : ScriptableObject
 
     public void GiveItemToPlayer(Item a_item)
     {
-        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        PlayerInventory playerInventory = FindFirstObjectByType<PlayerInventory>();
         Debug.Log(playerInventory);
         playerInventory.AddToInventory(a_item);
     }

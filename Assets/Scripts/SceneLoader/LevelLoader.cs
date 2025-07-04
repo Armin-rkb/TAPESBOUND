@@ -21,7 +21,7 @@ public class LevelLoader : MonoBehaviour
         // UGLY!
         // Todo: Need to pause playermovement and set all npc's to idle state.
         GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
-        GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GameObject.Find("Player").GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GameObject.Find("Player").GetComponent<Animator>().enabled = false;
         
         StartCoroutine(LoadLevel(level));
