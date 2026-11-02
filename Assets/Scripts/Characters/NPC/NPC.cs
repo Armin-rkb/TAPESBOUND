@@ -9,6 +9,7 @@ public class NPC : MonoBehaviour
     private ObjectId npc_id;
 
     private BaseState previousState = null;
+    private bool isInDialogue = false;
 
     private void Awake()
     {
@@ -45,12 +46,24 @@ public class NPC : MonoBehaviour
 
     private void EnterDialogue()
     {
+        if (isInDialogue)
+        {
+            return;
+        }
+
+        isInDialogue = true;
         previousState = stateMachine.currentState;
         stateMachine.EnterState(typeof(DialogueState));
     }
 
     private void ExitDialogue()
     {
+        if (!isInDialogue)
+        {
+            return;
+        }
+
+        isInDialogue = false;
         stateMachine.EnterState(previousState);
         previousState = null;
     }

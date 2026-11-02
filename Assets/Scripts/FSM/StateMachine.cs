@@ -61,22 +61,20 @@ public class StateMachine : MonoBehaviour
         {
             return;
         }
-        a_nextState.GetType();
-
-        currentState.OnStateExit();
+        currentState?.OnStateExit();
         currentState = a_nextState;
         currentState.OnStateEnter();
     }
-    
+
     public void EnterState(Type a_nextState)
     {
-        if (a_nextState == null)
+        if (a_nextState == null || !fsmStates.TryGetValue(a_nextState, out BaseState nextState))
         {
             return;
         }
 
-        currentState.OnStateExit();
-        currentState = fsmStates[a_nextState];
+        currentState?.OnStateExit();
+        currentState = nextState;
         currentState.OnStateEnter();
     }
 }

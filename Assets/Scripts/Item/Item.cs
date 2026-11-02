@@ -7,6 +7,9 @@ public class Item : ScriptableObject, IItem
     public string description;
     public int price;
 
+    // Name shown in game, falls back to the asset name.
+    public string DisplayName => string.IsNullOrEmpty(name) ? base.name : name;
+
     public void Use()
     {
     }

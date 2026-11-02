@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pray to Banana
   description: Listen to Banana's music.
-  completed: 1
   questRewards:
   - Banana peel
   NPC_ID: eca6ec6d-a0fb-4ac0-a772-5680bfd9028f

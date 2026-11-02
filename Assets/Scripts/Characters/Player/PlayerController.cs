@@ -8,7 +8,8 @@ public enum PlayerState
     normal,
     menu,
     dialogue,
-    cutscene
+    cutscene,
+    questLog
 }
 
 public enum PlayerOutfit
@@ -33,6 +34,20 @@ public class PlayerController : MonoBehaviour
         return instance;
     }
     private static PlayerController instance;
+
+    // Name used for {player} in dialogue.
+    public static string PlayerName
+    {
+        get
+        {
+            PlayerController player = GetInstance();
+            if (player != null && player.playerCharacterProfile != null && !string.IsNullOrEmpty(player.playerCharacterProfile.characterName))
+            {
+                return player.playerCharacterProfile.characterName;
+            }
+            return "You";
+        }
+    }
 
     [Header("Character Stats")]
     public CharacterProfile playerCharacterProfile;
@@ -70,10 +85,34 @@ public class PlayerController : MonoBehaviour
             case PlayerState.normal:
             {
                 CheckInteraction();
-                
+
                 if (playerInput.menuKeyPressed)
                 {
                     OpenMenu();
+                }
+                else if (playerInput.questLogKeyPressed)
+                {
+                    OpenQuestLog();
+                }
+                break;
+            }
+            case PlayerState.questLog:
+            {
+                if (playerInput.questLogKeyPressed || playerInput.menuKeyPressed)
+                {
+                    CloseQuestLog();
+                }
+                else if (playerInput.interactKeyPressed)
+                {
+                    QuestUI.instance.TrackSelected();
+                }
+                else if (playerInput.menuUpPressed)
+                {
+                    QuestUI.instance.MoveSelection(-1);
+                }
+                else if (playerInput.menuDownPressed)
+                {
+                    QuestUI.instance.MoveSelection(1);
                 }
                 break;
             }
@@ -126,7 +165,36 @@ public class PlayerController : MonoBehaviour
     private void CloseMenu()
     {
         playerOptionUI.SetActive(false);
-        
+
+        SwitchPlayerState(PlayerState.normal);
+        UnlockMovement();
+    }
+
+    // Public so a menu button can open it too.
+    public void OpenQuestLog()
+    {
+        if (QuestUI.instance == null)
+        {
+            return;
+        }
+
+        if (currentPlayerState == PlayerState.menu)
+        {
+            playerOptionUI.SetActive(false);
+        }
+
+        QuestUI.instance.OpenLog();
+        SwitchPlayerState(PlayerState.questLog);
+        LockMovement();
+    }
+
+    public void CloseQuestLog()
+    {
+        if (QuestUI.instance != null)
+        {
+            QuestUI.instance.CloseLog();
+        }
+
         SwitchPlayerState(PlayerState.normal);
         UnlockMovement();
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
@@ -9,7 +10,10 @@ public class DialogueOptions : DialogueEvent
     public class Options
     {
         public string buttonName = "";
+        [Tooltip("Plays after picking this option. Empty ends the conversation.")]
         public DialogueBase nextDialogue;
+        [Tooltip("Runs when this option is picked, before the next dialogue.")]
+        public List<DialogueCommand> commands = new List<DialogueCommand>();
         [Header("Button OnClick Event.")]
         public UnityEvent buttonEvent;
     }

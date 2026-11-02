@@ -4214,6 +4214,53 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28969971b4cd7ef469dae63c103fc563, type: 2}
   - {fileID: 11400000, guid: d6603b7657e6c654aa740d1c45a4f67c, type: 2}
   npc: {fileID: 1778913707}
+  conditionalDialogue:
+  - note: Quest done
+    conditions:
+    - type: 0
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      questState: 3
+      flag:
+      item: {fileID: 0}
+      amount: 1
+      not: 0
+    dialogue:
+    - {fileID: 11400000, guid: f83b016108e14fc79530e79333c5ad2f, type: 2}
+  - note: Brought the liquor
+    conditions:
+    - type: 0
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      questState: 2
+      flag:
+      item: {fileID: 0}
+      amount: 1
+      not: 0
+    dialogue:
+    - {fileID: 11400000, guid: 501d5fe29e9042f281cb4e38b0ce1ffd, type: 2}
+  - note: Waiting for the liquor
+    conditions:
+    - type: 0
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      questState: 1
+      flag:
+      item: {fileID: 0}
+      amount: 1
+      not: 0
+    dialogue:
+    - {fileID: 11400000, guid: de8f455e144e3e6419e8cf613fbba947, type: 2}
+    - {fileID: 11400000, guid: 28969971b4cd7ef469dae63c103fc563, type: 2}
+    - {fileID: 11400000, guid: d6603b7657e6c654aa740d1c45a4f67c, type: 2}
+  - note: Quest not started
+    conditions:
+    - type: 0
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      questState: 0
+      flag:
+      item: {fileID: 0}
+      amount: 1
+      not: 0
+    dialogue:
+    - {fileID: 11400000, guid: 39f55dd645b6d39438cdbe4b414df73e, type: 2}
 --- !u!58 &1778913710
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5275,8 +5322,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtPlayer: 1
   dialogue:
-  - {fileID: 11400000, guid: 97b3b82142df92a46a079ed8e062512b, type: 2}
+  - {fileID: 11400000, guid: d60664a9a3ec7a34da0f153631a65628, type: 2}
   npc: {fileID: 1952599641}
+  conditionalDialogue:
+  - note: Sent by Shoenice
+    conditions:
+    - type: 0
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      questState: 1
+      flag:
+      item: {fileID: 0}
+      amount: 1
+      not: 0
+    - type: 2
+      quest: {fileID: 0}
+      questState: 0
+      flag:
+      item: {fileID: 11400000, guid: 6c9f36b427f6ce5449ac71fc3fb7af24, type: 2}
+      amount: 1
+      not: 1
+    dialogue:
+    - {fileID: 11400000, guid: 97b3b82142df92a46a079ed8e062512b, type: 2}
 --- !u!58 &1952599644
 CircleCollider2D:
   m_ObjectHideFlags: 0

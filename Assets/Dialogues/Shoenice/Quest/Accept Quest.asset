@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueInfo:
   - text: 'Quest: " Shoenice wants to NUKE the World! "'
+    commands:
+    - type: 5
+      item: {fileID: 0}
+      quest: {fileID: 11400000, guid: 24fdc6eb70d340159dbc7c08029a4231, type: 2}
+      dialogue: {fileID: 0}
+      sound: {fileID: 0}
+      key:
+      amount: 1
+      silent: 1
