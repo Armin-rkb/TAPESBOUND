@@ -1,6 +1,8 @@
 # TAPESBOUND
 A project to demonstrate the possibilities of creating a video game. This game was made to be showcased for an audience on the Ferstruc TAPES Vol 2. Gameplay and art are inspired by the SNES classic Earthbound.
 
+Open the project with **Unity 6.3 LTS (6000.3.27f2)**.
+
 ## Dialogue & quests
 
 Everything below is set up in the Inspector, no code needed. The City scene has a working example: Shoenice's liquor quest.

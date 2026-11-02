@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = FindObjectOfType<PlayerController>();
+            instance = FindAnyObjectByType<PlayerController>();
         }
 
         return instance;
@@ -265,7 +265,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         // TODO: Replace this!
-        PlayableDirector playableDirector = GameObject.FindObjectOfType<PlayableDirector>();
+        PlayableDirector playableDirector = FindAnyObjectByType<PlayableDirector>();
         if (playableDirector)
         {
             playableDirector.played += EnterCutscene;
@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         // TODO: Replace this!
-        PlayableDirector playableDirector = GameObject.FindObjectOfType<PlayableDirector>();
+        PlayableDirector playableDirector = FindAnyObjectByType<PlayableDirector>();
         if (playableDirector)
         {
             playableDirector.played -= EnterCutscene;

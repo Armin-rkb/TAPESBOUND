@@ -47,13 +47,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        playerController.rb.velocity = playerController.playerInput.movementDirection * movementSpeed;
+        playerController.rb.linearVelocity = playerController.playerInput.movementDirection * movementSpeed;
         onPlayerMove?.Invoke();
     }
 
     public void StopMove()
     {
-        playerController.rb.velocity = new Vector2(0, 0);
+        playerController.rb.linearVelocity = new Vector2(0, 0);
         onPlayerStop?.Invoke();
     }
 

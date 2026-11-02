@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<PlayerInventory>();
+                instance = FindAnyObjectByType<PlayerInventory>();
             }
             return instance;
         }

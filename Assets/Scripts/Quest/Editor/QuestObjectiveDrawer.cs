@@ -63,7 +63,7 @@ public class QuestObjectiveDrawer : TypedPropertyDrawer
             return null;
         }
 
-        foreach (ObjectId objectId in Object.FindObjectsOfType<ObjectId>())
+        foreach (ObjectId objectId in Object.FindObjectsByType<ObjectId>(FindObjectsSortMode.None))
         {
             if (objectId.Id == a_id)
             {

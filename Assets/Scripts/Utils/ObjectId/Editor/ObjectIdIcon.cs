@@ -16,7 +16,7 @@ class ObjectIdIcon
     {
         if (texture == null) { return; }
 
-        GameObject go = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
+        GameObject go = EditorUtility.EntityIdToObject(instanceID) as GameObject;
         if (go != null && go.GetComponent<ObjectId>())
         {
             Rect r = new Rect(selectionRect);

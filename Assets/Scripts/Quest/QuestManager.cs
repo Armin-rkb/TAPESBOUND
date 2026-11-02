@@ -140,7 +140,7 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         // UI first, so it hears about the starting quests.
-        if (createQuestUI && FindObjectOfType<QuestUI>() == null)
+        if (createQuestUI && FindAnyObjectByType<QuestUI>() == null)
         {
             QuestUI.Create();
         }

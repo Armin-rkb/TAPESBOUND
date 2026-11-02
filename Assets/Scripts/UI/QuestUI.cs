@@ -472,7 +472,7 @@ public class QuestUI : MonoBehaviour
 
         if (font == null)
         {
-            font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         }
         if (fontSize <= 0)
         {
