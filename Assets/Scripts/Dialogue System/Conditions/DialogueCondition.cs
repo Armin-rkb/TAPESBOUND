@@ -7,7 +7,8 @@ public enum DialogueConditionType
     QuestState = 0,
     Flag = 1,
     HasItem = 2,
-    HasMoney = 3
+    HasMoney = 3,
+    InParty = 4
 }
 
 /// <summary>
@@ -22,6 +23,7 @@ public class DialogueCondition
     public string flag = "";
     public Item item = null;
     public int amount = 1;
+    public CharacterProfile character = null;
     [Tooltip("Flip the result, e.g. 'flag is NOT set' or 'does NOT have the item'.")]
     public bool not = false;
 
@@ -45,6 +47,8 @@ public class DialogueCondition
                 return inventory != null && inventory.HasItem(item, Mathf.Max(1, amount));
             case DialogueConditionType.HasMoney:
                 return inventory != null && inventory.Money >= amount;
+            case DialogueConditionType.InParty:
+                return PartyManager.IsInParty(character);
         }
         return false;
     }

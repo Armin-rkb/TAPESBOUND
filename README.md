@@ -59,4 +59,32 @@ The tracker in the top left shows the current step of the tracked quest. The Que
 
 ### Events
 - **EventTriggerZone**: put it on a trigger collider. When the player walks in it plays a dialogue, runs commands and/or a UnityEvent. Use *Once Flag* to only trigger it once.
-- The **GenericEvents** asset (`EventBehaviour`) has StartQuest, CompleteQuest, SetFlag and GiveMoney for UnityEvents and timeline signals.
+- The **GenericEvents** asset (`EventBehaviour`) has StartQuest, CompleteQuest, SetFlag, GiveMoney, JoinParty and LeaveParty for UnityEvents and timeline signals.
+
+## Party & co-op
+
+### Party members
+A party member is a **Character** (`Create > Character > New Character`): a name and an animator controller with `Horizontal`, `Vertical` and `IsWalking` (`LastHorizontal`/`LastVertical` are optional).
+
+- **Joining**: use the **JoinParty** / **LeaveParty** commands (on a dialogue line, option, quest or event zone). They print *"Paula joined the party!"* unless Silent. Or add the character to **Starting Members** on the scene's PartyManager.
+- Like Earthbound, up to 3 members travel with the player. They walk in line behind the player (**Line Spacing**), and the party stays the same when loading another scene.
+- Every scene with a player gets a PartyManager by itself. Add one to the Player yourself to change its settings.
+- **What a member looks like**: a `Follower` placed in the scene for that character is used (it stays hidden until they join, like *Peniswise Party* in City). Otherwise the PartyManager creates one, from **Member Prefab** when set.
+- The **InParty** condition works everywhere conditions do. Put a **ConditionalActive** component on an NPC with *InParty (Not)* to make them disappear once they joined. It also works for other things, like showing someone after a quest.
+- City has Peniswise as a starting member to try it out. Remove them from the Player's PartyManager to undo that.
+
+### Playing together
+Player 1 plays the leader with the keyboard and the first controller they use. Anyone else presses **Start** on their own controller to take over the next free party member (P2 to P4), and **Select** to give it back; it then walks back into line. Unplugging a controller also leaves.
+
+| | Keyboard | Gamepad | Other joysticks |
+| --- | --- | --- | --- |
+| Walk | Arrows / WASD | Left stick / D-pad | Stick / hat |
+| Talk, check, read on | Space | A | Button 1 or 2 |
+| Menu | Shift | B | Button 3 |
+| Quest log | Q | Y | Button 4 |
+| Join as a party member | | Start | Button 10 |
+| Leave | | Select / Back | Button 9 |
+
+- Everybody stays on one screen: the camera frames all players and nobody can walk off the screen (**Screen Margin** on the PartyManager).
+- Co-op players can talk to NPCs, check things, read on in the text box and trigger EventTriggerZones. The menu and quest log belong to player 1. Everybody waits while player 1 is in a conversation, a menu or a cutscene.
+- "P1"/"P2" tags show above the characters and join messages show top right. The PartyManager creates this `CoopUI`; add one yourself to change the colors or text.

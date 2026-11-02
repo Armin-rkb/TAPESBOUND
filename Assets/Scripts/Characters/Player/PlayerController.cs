@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
     private readonly string outfitAnimationParam = "Outfit";
     private readonly string outfitChangedAnimationParam = "OutfitChanged";
 
+    // Free to walk around (no dialogue, menu, cutscene or scene loading).
+    public bool CanMove => currentPlayerState == PlayerState.normal && playerMovement != null && playerMovement.enabled;
+    public float MovementSpeed => playerMovement != null ? playerMovement.MovementSpeed : 0f;
+
     private void Awake()
     {
         ChangeOutfit(currentOutfit);
@@ -213,7 +217,7 @@ public class PlayerController : MonoBehaviour
         {
             if (playerInput.interactKeyPressed)
             {
-                currentInteractable.Interact();
+                Interactable.InteractAs(currentInteractable, gameObject);
             }
         }
     }

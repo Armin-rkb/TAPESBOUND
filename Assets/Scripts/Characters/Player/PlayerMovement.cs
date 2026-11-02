@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalking;
     private Vector2 lastDirection;
 
+    public float MovementSpeed => movementSpeed;
+
     public delegate void OnPlayerMove();
     public static event OnPlayerMove onPlayerMove;
     public delegate void OnPlayerStop();
@@ -47,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        playerController.rb.linearVelocity = playerController.playerInput.movementDirection * movementSpeed;
+        Vector2 velocity = playerController.playerInput.movementDirection * movementSpeed;
+        playerController.rb.linearVelocity = PartyManager.KeepOnScreen(transform, playerController.rb.position, velocity, Time.fixedDeltaTime);
         onPlayerMove?.Invoke();
     }
 

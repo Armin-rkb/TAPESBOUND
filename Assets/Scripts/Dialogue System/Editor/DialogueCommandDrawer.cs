@@ -41,6 +41,11 @@ public class DialogueCommandDrawer : TypedPropertyDrawer
             case DialogueCommandType.PlaySound:
                 yield return new Field("sound", "Sound");
                 break;
+            case DialogueCommandType.JoinParty:
+            case DialogueCommandType.LeaveParty:
+                yield return new Field("character", "Character");
+                yield return new Field("silent", "Silent");
+                break;
         }
     }
 }

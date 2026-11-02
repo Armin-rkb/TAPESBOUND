@@ -12,4 +12,6 @@ public class CharacterProfile : ScriptableObject
     public int xp;
     public int hp;
     public int pp;
+
+    public string DisplayName => string.IsNullOrEmpty(characterName) ? name : characterName;
 }

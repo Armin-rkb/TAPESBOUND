@@ -5,6 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Runs an event when the player walks into this trigger: play a dialogue, run commands (start a quest,
 /// set a flag for a "reach this place" objective...) and/or a UnityEvent.
+/// Party members played by other players trigger it too, the ones walking in line don't.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class EventTriggerZone : MonoBehaviour
@@ -28,7 +29,7 @@ public class EventTriggerZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D a_collision)
     {
-        if (a_collision == null || !a_collision.CompareTag(Tags.Player))
+        if (a_collision == null || !IsPlayer(a_collision))
         {
             return;
         }
@@ -51,5 +52,10 @@ public class EventTriggerZone : MonoBehaviour
         }
         DialogueCommand.ExecuteAll(commands);
         onTriggered?.Invoke();
+    }
+
+    private static bool IsPlayer(Collider2D a_collision)
+    {
+        return a_collision.CompareTag(Tags.Player) || (a_collision.TryGetComponent(out Follower follower) && follower.IsControlled);
     }
 }

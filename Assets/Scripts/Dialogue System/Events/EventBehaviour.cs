@@ -57,6 +57,16 @@ public class EventBehaviour : ScriptableObject
     {
         DialogueCommand.GiveMoney(a_amount, false);
     }
+
+    public void JoinParty(CharacterProfile a_character)
+    {
+        PartyManager.Join(a_character);
+    }
+
+    public void LeaveParty(CharacterProfile a_character)
+    {
+        PartyManager.Leave(a_character);
+    }
 }
 
 

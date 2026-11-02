@@ -15,7 +15,9 @@ public enum DialogueCommandType
     SetFlag = 8,
     ClearFlag = 9,
     PlayDialogue = 10,
-    PlaySound = 11
+    PlaySound = 11,
+    JoinParty = 12,
+    LeaveParty = 13
 }
 
 /// <summary>
@@ -30,6 +32,7 @@ public class DialogueCommand
     public Quest quest = null;
     public DialogueBase dialogue = null;
     public AudioClip sound = null;
+    public CharacterProfile character = null;
     [Tooltip("SetFlag/ClearFlag: the flag name. AdvanceQuest: the objective key (empty = current objective).")]
     public string key = "";
     public int amount = 1;
@@ -100,6 +103,12 @@ public class DialogueCommand
                 break;
             case DialogueCommandType.PlaySound:
                 DialogueManager.PlaySound(sound);
+                break;
+            case DialogueCommandType.JoinParty:
+                PartyManager.Join(character, !silent);
+                break;
+            case DialogueCommandType.LeaveParty:
+                PartyManager.Leave(character, !silent);
                 break;
         }
     }

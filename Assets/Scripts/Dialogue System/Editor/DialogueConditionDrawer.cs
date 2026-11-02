@@ -24,6 +24,9 @@ public class DialogueConditionDrawer : TypedPropertyDrawer
             case DialogueConditionType.HasMoney:
                 yield return new Field("amount", "Has At Least ($)");
                 break;
+            case DialogueConditionType.InParty:
+                yield return new Field("character", "In Party");
+                break;
         }
         yield return new Field("not", "Not");
     }
