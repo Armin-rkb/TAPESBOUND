@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Girl
   m_EditorClassIdentifier: Assembly-CSharp::DialogueBase
   dialogueInfo:
-  - text: 'Golly, I cannot wait to watch the new movie <b>PANT RIP!</b>
+  - text: 'Golly, I cannot wait to watch the new movie PANT RIP!
 
-      Did
-      you know? It''s a Burger Town exclusive.
+      Did you know?
+      It''s a Burger Town exclusive.
 
-      Am I lucky to be heading there
-      now!'
+      Am I lucky to be heading there now!'
     commands: []

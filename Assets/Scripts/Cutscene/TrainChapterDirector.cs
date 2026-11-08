@@ -44,6 +44,8 @@ public class TrainChapterDirector : MonoBehaviour
     [SerializeField] private float cardHold = 2.5f;
 
     [Header("1. Intro")]
+    [Tooltip("Shown in web builds, browsers only play sound after the first tap or click.")]
+    [SerializeField] private GameObject tapToStart = null;
     [SerializeField] private float blackScreenHold = 5f;
     [SerializeField] private Sprite rememberCard = null;
     [SerializeField] private Sprite logoCard = null;
@@ -119,6 +121,13 @@ public class TrainChapterDirector : MonoBehaviour
         player.spriteRenderer.enabled = false;
         mbk.gameObject.SetActive(false);
         Fader.SetBlack(true);
+
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            tapToStart.SetActive(true);
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.touchCount > 0 || Input.anyKeyDown);
+            tapToStart.SetActive(false);
+        }
 
         trainTracks.volume = 0f;
         trainTracks.Play();

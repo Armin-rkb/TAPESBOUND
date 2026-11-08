@@ -24,6 +24,25 @@ public class TrainChapterTests
     }
 
     [Test]
+    public void TouchDpad_DoesNothingInTheMiddle_AndGivesFullDirectionsAroundIt()
+    {
+        Assert.AreEqual(Vector2.zero, TouchDpad.GetDirection(new Vector2(5f, 0f), 120f, 0.12f));
+        Assert.AreEqual(Vector2.right, TouchDpad.GetDirection(new Vector2(40f, 0f), 120f, 0.12f));
+        Assert.AreEqual(new Vector2(-1f, 1f).normalized, TouchDpad.GetDirection(new Vector2(-30f, 30f), 120f, 0.12f));
+    }
+
+    [Test]
+    public void TouchControls_AreSizedForThePhone_AndFitInTheBlackBars()
+    {
+        // iPhone held upright: lots of room below the picture.
+        Assert.AreEqual(3f, TouchControls.GetScale(1170f, 2532f, new Rect(73f, 818f, 1024f, 896f), 390f, 152f), 0.001f);
+        // iPad held sideways: the bars are narrow, so the controls shrink.
+        Assert.AreEqual(256f / 152f, TouchControls.GetScale(2048f, 1536f, new Rect(256f, 96f, 1536f, 1344f), 390f, 152f), 0.001f);
+        // No bars at all: never smaller than one pixel per unit.
+        Assert.AreEqual(1f, TouchControls.GetScale(768f, 672f, new Rect(0f, 0f, 768f, 672f), 390f, 152f), 0.001f);
+    }
+
+    [Test]
     public void KnockingDoor_CountsKnocksAndStopsAfterTheLast()
     {
         GameObject doorObject = new GameObject("Door");

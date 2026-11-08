@@ -68,6 +68,8 @@ Open `Assets/Scenes/Underwhere Train.unity` and press Play. It's the whole of sc
 - **Train Chapter Director** runs the cutscenes. Pictures, sounds, dialogue and timing are all in its inspector. Set **Start At** to *Player Control* to skip the opening while testing.
 - Every room is an object under **Train**, with a **Floor** (the outline you can walk in), its doors and its people. Doors are `RoomDoor` components: walk in and you come out at the door's **Arrival** point.
 - The machinist's door is a `KnockingDoor`: add or remove **Knocks** to change how many it takes.
+- On phones the **Touch Controls** object shows a d-pad and an A button in the black bars around the picture. Tick **Always Show** on it to try them in the Editor.
+- The dialogue font is drawn on a 16 pixel grid, keep its size at 16 (or 32) so the text stays sharp.
 - Dialogue is in `Assets/Dialogues/Underwhere`, art in `Assets/Sprites/Underwhere`.
 - The sound effects in `Assets/Audio/SFX/Underwhere` are generated placeholders, and the earbuds and first ambience both use *Earthbound type beat*. Swap them on the director.
 
