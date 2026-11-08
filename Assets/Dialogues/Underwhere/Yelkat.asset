@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d88a9f8760b82a41ae5461c809557bf, type: 3}
+  m_Name: Yelkat
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueBase
+  dialogueInfo:
+  - text: 'there''s no good view from here,
+
+      but I tried to get one from the
+      machinist''s room.'
+    commands: []
+  - text: ...
+    commands: []
+  - text: what?
+    commands: []
+  - text: 'they''re usually closed,
+
+      but I just knocked on the door a couple
+      times.'
+    commands: []
+  - text: ...
+    commands: []
+  - text: 'For some reason, they offered me some peanut butter as well.
+
+      It
+      made me feel offended.'
+    commands: []
+  - text: 'Hey, kid,
+
+      do I look like I''m in need of some peanut butter?!'
+    commands: []
