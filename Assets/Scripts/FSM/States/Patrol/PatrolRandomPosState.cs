@@ -57,7 +57,7 @@ public class PatrolRandomPosState : BaseState, IMove
         isWalking = false;
         isWaiting = false;
         npc.animator.SetBool("IsWalking", isWalking);
-        npc.StopCoroutine(bufferTimer);
+        if (bufferTimer != null) npc.StopCoroutine(bufferTimer);
     }
 
     public void Move()

@@ -116,6 +116,7 @@ public static class LocalCoop
         players.Add(player);
         players.Sort((a_first, a_second) => a_first.Number.CompareTo(a_second.Number));
 
+        GameAudio.Play(GameSound.PartyJoin);
         onPlayerJoined?.Invoke(player);
         return player;
     }
@@ -127,6 +128,7 @@ public static class LocalCoop
             return;
         }
 
+        GameAudio.Play(GameSound.PartyLeave);
         onPlayerLeft?.Invoke(a_player);
     }
 

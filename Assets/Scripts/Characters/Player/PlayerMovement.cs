@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed = 0;
     private bool isWalking;
     private Vector2 lastDirection;
+    private float stepTimer = 0f;
 
     public float MovementSpeed => movementSpeed;
 
@@ -21,6 +22,17 @@ public class PlayerMovement : MonoBehaviour
         FlipAnimation();
         Animate();
         GetInput();
+        PlayFootsteps();
+    }
+
+    private void PlayFootsteps()
+    {
+        stepTimer = isWalking ? stepTimer - Time.deltaTime : 0f;
+        if (isWalking && stepTimer <= 0f)
+        {
+            GameAudio.PlayStep();
+            stepTimer = GameAudio.StepInterval;
+        }
     }
 
     void FixedUpdate()

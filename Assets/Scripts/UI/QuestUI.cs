@@ -167,6 +167,7 @@ public class QuestUI : MonoBehaviour
             return;
         }
 
+        GameAudio.Play(GameSound.Cursor);
         selectedIndex = (selectedIndex + a_direction + logEntries.Count) % logEntries.Count;
         RefreshLog();
     }
@@ -181,6 +182,7 @@ public class QuestUI : MonoBehaviour
             return;
         }
 
+        GameAudio.Play(GameSound.Confirm);
         trackedQuest = logEntries[selectedIndex].Quest;
         RefreshLog();
     }

@@ -209,10 +209,14 @@ public class QuestManager : MonoBehaviour
         {
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.questStarted, null, 0, a_quest));
         }
+        if (a_announce)
+        {
+            GameAudio.Play(GameSound.QuestStart);
+        }
         onQuestStarted?.Invoke(progress);
 
         // You might already have what the quest asks for.
-        Refresh(progress, false);
+        Refresh(progress, false, !a_announce);
         return true;
     }
 
@@ -268,6 +272,10 @@ public class QuestManager : MonoBehaviour
         }
 
         progress.State = QuestState.Completed;
+        if (a_announce)
+        {
+            GameAudio.Play(GameSound.QuestComplete);
+        }
 
         bool announce = a_announce && Announce;
         if (a_quest.CompleteDialogue != null && DialogueManager.instance != null)
@@ -329,7 +337,7 @@ public class QuestManager : MonoBehaviour
     }
 
     // Update state based objectives and move the quest to the right state.
-    private static void Refresh(QuestProgress a_progress, bool a_changed)
+    private static void Refresh(QuestProgress a_progress, bool a_changed, bool a_silent = false)
     {
         if (a_progress.State == QuestState.Completed)
         {
@@ -337,6 +345,7 @@ public class QuestManager : MonoBehaviour
         }
 
         bool changed = a_changed;
+        bool advanced = a_changed;
         IReadOnlyList<QuestObjective> objectives = a_progress.Quest.Objectives;
         for (int i = 0; i < objectives.Count; i++)
         {
@@ -348,6 +357,7 @@ public class QuestManager : MonoBehaviour
             int value = objectives[i].EvaluateState();
             if (value != a_progress.GetProgress(i))
             {
+                advanced |= value > a_progress.GetProgress(i);
                 a_progress.SetProgress(i, value);
                 changed = true;
             }
@@ -376,6 +386,10 @@ public class QuestManager : MonoBehaviour
 
         if (changed)
         {
+            if (advanced && !a_silent)
+            {
+                GameAudio.Play(GameSound.QuestUpdate);
+            }
             onQuestUpdated?.Invoke(a_progress);
         }
     }

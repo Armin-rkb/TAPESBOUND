@@ -31,6 +31,7 @@ public class Follower : MonoBehaviour
     private bool isWalking = false;
     private Vector2 moveInput;
     private Vector2 facing = Vector2.down;
+    private float stepTimer = 0f;
 
     private const string HorizontalParam = "Horizontal";
     private const string VerticalParam = "Vertical";
@@ -166,6 +167,14 @@ public class Follower : MonoBehaviour
         if (isWalking)
         {
             facing = moveInput;
+        }
+
+        // Only someone playing this character, a whole line of footsteps gets noisy.
+        stepTimer = isWalking ? stepTimer - Time.deltaTime : 0f;
+        if (isWalking && stepTimer <= 0f)
+        {
+            GameAudio.PlayStep();
+            stepTimer = GameAudio.StepInterval;
         }
         UpdateAnimation(moveInput);
     }

@@ -127,6 +127,7 @@ public class DialogueCommand
             bool added = inventory.TryAddItem(a_item);
             if (!a_silent)
             {
+                GameAudio.Play(added ? GameSound.ItemGet : GameSound.Error);
                 SystemMessages messages = DialogueManager.Messages;
                 DialogueManager.ShowSystemMessage(SystemMessages.Format(added ? messages.itemReceived : messages.inventoryFull, a_item));
             }
@@ -149,6 +150,7 @@ public class DialogueCommand
         int removed = inventory.RemoveFromInventory(a_item, a_count);
         if (removed > 0 && !a_silent)
         {
+            GameAudio.Play(GameSound.ItemGive);
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.itemGiven, a_item, removed));
         }
     }
@@ -164,6 +166,7 @@ public class DialogueCommand
         inventory.AddMoney(a_amount);
         if (!a_silent)
         {
+            GameAudio.Play(GameSound.MoneyGet);
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.moneyReceived, null, a_amount));
         }
     }
@@ -176,7 +179,14 @@ public class DialogueCommand
             return;
         }
 
-        if (inventory.SpendMoney(a_amount) && !a_silent)
+        bool paid = inventory.SpendMoney(a_amount);
+        if (a_silent)
+        {
+            return;
+        }
+
+        GameAudio.Play(paid ? GameSound.MoneyPay : GameSound.Error);
+        if (paid)
         {
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.moneyPaid, null, a_amount));
         }

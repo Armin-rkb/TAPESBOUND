@@ -127,6 +127,7 @@ public class TrainChapterDirector : MonoBehaviour
             tapToStart.SetActive(true);
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || Input.touchCount > 0 || Input.anyKeyDown);
             tapToStart.SetActive(false);
+            GameAudio.Play(GameSound.Confirm);
         }
 
         trainTracks.volume = 0f;
@@ -284,9 +285,11 @@ public class TrainChapterDirector : MonoBehaviour
     {
         Transform actor = a_actor.transform;
         a_actor.flipX = a_destination.x > actor.position.x;
+        float nextStep = 0f;
 
         while ((Vector2)actor.position != a_destination)
         {
+            PlayStepWhenDue(ref nextStep);
             Vector2 next = Vector2.MoveTowards(actor.position, a_destination, walkSpeed * Time.deltaTime);
             actor.position = new Vector3(next.x, next.y, actor.position.z);
             yield return null;
@@ -317,9 +320,11 @@ public class TrainChapterDirector : MonoBehaviour
         animator.SetFloat("LastVertical", direction.y);
         animator.SetBool("IsWalking", true);
         player.spriteRenderer.flipX = direction.x > 0f;
+        float nextStep = 0f;
 
         while ((Vector2)body.position != a_destination)
         {
+            PlayStepWhenDue(ref nextStep);
             Vector2 next = Vector2.MoveTowards(body.position, a_destination, walkSpeed * Time.deltaTime);
             body.position = new Vector3(next.x, next.y, body.position.z);
             yield return null;
@@ -329,6 +334,15 @@ public class TrainChapterDirector : MonoBehaviour
         yield return null;
         RoomDoor.MovePlayer(player, a_destination);
         player.rb.simulated = true;
+    }
+
+    private static void PlayStepWhenDue(ref float a_nextStep)
+    {
+        if (Time.time >= a_nextStep)
+        {
+            GameAudio.PlayStep();
+            a_nextStep = Time.time + GameAudio.StepInterval;
+        }
     }
 
     private static IEnumerator FadeVolume(AudioSource a_source, float a_volume, float a_time)

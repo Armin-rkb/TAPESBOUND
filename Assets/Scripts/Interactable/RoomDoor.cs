@@ -30,7 +30,7 @@ public class RoomDoor : MonoBehaviour
     private IEnumerator Travel(PlayerController a_player)
     {
         a_player.EnterCutscene(null);
-        DialogueManager.PlaySound(sound);
+        GameAudio.Play(sound, GameSound.Door);
         yield return ScreenFader.instance.FadeToBlack(fadeTime);
 
         MovePlayer(a_player, arrival.position);

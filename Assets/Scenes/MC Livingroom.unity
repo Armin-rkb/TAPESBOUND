@@ -536,8 +536,8 @@ PolygonCollider2D:
       - {x: -0.49287868, y: -0.22978145}
       - {x: -0.25539955, y: 0.0021747947}
       - {x: -0.019979201, y: 0.0033683404}
-      - {x: -0.011025608, y: -0.47554827}
-      - {x: 2.0090032, y: -0.4744854}
+      - {x: 0.005998999, y: -0.35637608}
+      - {x: 2.0217717, y: -0.35531315}
       - {x: 2.0088484, y: -0.27562025}
       - {x: 0.7032719, y: -0.2745701}
       - {x: 0.70447314, y: 0.048663706}
@@ -578,7 +578,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7a3e91c4d2f84b06a51c6e0f3b9d2748, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

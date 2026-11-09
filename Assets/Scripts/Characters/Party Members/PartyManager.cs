@@ -109,6 +109,7 @@ public class PartyManager : MonoBehaviour
 
         if (ShouldAnnounce(a_announce))
         {
+            GameAudio.Play(GameSound.PartyJoin);
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.partyJoined, a_character: a_character));
         }
         onPartyChanged?.Invoke(a_character, true);
@@ -133,6 +134,7 @@ public class PartyManager : MonoBehaviour
 
         if (ShouldAnnounce(a_announce))
         {
+            GameAudio.Play(GameSound.PartyLeave);
             DialogueManager.ShowSystemMessage(SystemMessages.Format(DialogueManager.Messages.partyLeft, a_character: a_character));
         }
         onPartyChanged?.Invoke(a_character, false);

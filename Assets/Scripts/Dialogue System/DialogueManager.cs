@@ -143,6 +143,7 @@ public class DialogueManager : MonoBehaviour
         currentLine = null;
         insertIndex = 0;
 
+        GameAudio.Play(GameSound.DialogueOpen);
         dialogueBox.SetActive(true);
         dialogueText.text = "";
         CloseOptions();
@@ -241,6 +242,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        if (pendingLines.Count > 0)
+        {
+            GameAudio.Play(GameSound.TextAdvance);
+        }
         ShowNextLine();
     }
 
@@ -256,6 +261,7 @@ public class DialogueManager : MonoBehaviour
 
         DialogueOptions.Options option = activeOptions.optionsInfo[a_index];
         CloseOptions();
+        GameAudio.Play(GameSound.Confirm);
 
         // What the option does shows first, then the dialogue it leads to.
         insertIndex = 0;
@@ -612,6 +618,7 @@ public class DialogueManager : MonoBehaviour
         CloseOptions();
         SetWaitingForInput(false);
 
+        GameAudio.Play(GameSound.DialogueClose);
         dialogueBox.SetActive(false);
         isOpen = false;
 
@@ -660,9 +667,18 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayBlip(int a_characterIndex)
     {
-        if (textBlip != null && a_characterIndex % Mathf.Max(1, charactersPerBlip) == 0)
+        if (a_characterIndex % Mathf.Max(1, charactersPerBlip) != 0)
+        {
+            return;
+        }
+
+        if (textBlip != null)
         {
             GetAudioSource().PlayOneShot(textBlip);
+        }
+        else
+        {
+            GameAudio.Play(GameSound.TextBlip);
         }
     }
 

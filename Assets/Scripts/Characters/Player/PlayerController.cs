@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
 
     private void OpenMenu()
     {
+        GameAudio.Play(GameSound.MenuOpen);
         playerOptionUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(playerOptionUI.transform.GetChild(0).GetChild(0).gameObject);
         playerOptionUI.transform.GetChild(0).GetChild(0).GetComponent<SelectableUI>()
@@ -168,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
     private void CloseMenu()
     {
+        GameAudio.Play(GameSound.MenuClose);
         playerOptionUI.SetActive(false);
 
         SwitchPlayerState(PlayerState.normal);
@@ -187,6 +189,7 @@ public class PlayerController : MonoBehaviour
             playerOptionUI.SetActive(false);
         }
 
+        GameAudio.Play(GameSound.MenuOpen);
         QuestUI.instance.OpenLog();
         SwitchPlayerState(PlayerState.questLog);
         LockMovement();
@@ -194,6 +197,7 @@ public class PlayerController : MonoBehaviour
 
     public void CloseQuestLog()
     {
+        GameAudio.Play(GameSound.MenuClose);
         if (QuestUI.instance != null)
         {
             QuestUI.instance.CloseLog();

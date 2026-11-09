@@ -10,6 +10,7 @@ public class LevelLoader : MonoBehaviour
     public int level = 0;
 
     private float transitionTime = 3f;
+    private bool isLoading = false;
 
     void OnTriggerEnter2D(Collider2D a_collider)
     {
@@ -24,6 +25,12 @@ public class LevelLoader : MonoBehaviour
         GameObject.Find("Player").GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GameObject.Find("Player").GetComponent<Animator>().enabled = false;
         
+        if (!isLoading)
+        {
+            isLoading = true;
+            GameAudio.Play(GameSound.Transition);
+        }
+
         StartCoroutine(LoadLevel(level));
     }
 
